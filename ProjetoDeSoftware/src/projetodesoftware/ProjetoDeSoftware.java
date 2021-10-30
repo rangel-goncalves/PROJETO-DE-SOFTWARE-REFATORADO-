@@ -20,7 +20,7 @@ public class ProjetoDeSoftware {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner input =  new Scanner(System.in);
-        ArrayList<Funcionario> f = new ArrayList();
+        /*ArrayList<Funcionario> f = new ArrayList();
         String name ;
         String address;
         int employeeID;
@@ -30,13 +30,13 @@ public class ProjetoDeSoftware {
         float commission = 0.0f;
         boolean syndicate;
         
-        System.out.println("Adicionar Funcionario");
+        /*System.out.println("Adicionar Funcionario");
         System.out.println("Dados do Funcionario:");
         System.out.println("Nome: ");
         name= input.nextLine();
         System.out.println("Endereço: ");
         address = input.nextLine();
-        input.nextLine();
+        //input.nextLine();
         System.out.println("CPF: ");
         employeeID = input.nextInt();
         input.nextLine();
@@ -50,9 +50,34 @@ public class ProjetoDeSoftware {
         salary = input.nextFloat();
         System.out.println("É afiliado ao sindicato?(1 para S/0 para N)");
         syndicate = input.nextBoolean();
-        f.add(new Funcionario(name,address,employeeID,type,salary,commission,syndicate));
-        f.get(0).ficha();
+        f.add(new Funcionario(name,address,employeeID,type,salary,commission,syndicate));*/
+        QuadrodeFuncionarios qf = new QuadrodeFuncionarios();
         
+        //qf.add();
+        //qf.add();
+        //qf.add();
+        //qf.pesquisar();
+        while(true){
+            System.out.println("""
+                               MENU:
+                               Adicionar funcionario(1)
+                               Remover funcionario(2)
+                               Lista de funcionario(3)
+                               Pesquisar Funcionario(4)
+                               Fechar programa(0)""");
+            int opcao =  input.nextInt();
+            switch(opcao){
+                case 1 -> qf.add();
+                case 2 -> qf.remover();
+                case 3 -> qf.list();
+                case 4 -> qf.pesquisar();
+                default -> {
+                }
+            }
+            if (opcao == 0){
+                break;
+            }
+        }
     }
     
 }

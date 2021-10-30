@@ -5,6 +5,7 @@
  */
 package projetodesoftware;
 
+import java.util.Scanner;
 /**
  *
  * @author Rangel
@@ -13,21 +14,21 @@ public class Funcionario {
     
     private String name ;
     private String address;
-    private int employeeID;
+    private String employeeID;
     private String type;
     
     private float salary;
     private float commission;
     private boolean syndicate;
 
-    public Funcionario(String name, String address, int employeeID, String type, float salary, float commission , boolean syndicate) {
-        this.name = name;
+    public Funcionario(/*String name, String address, int employeeID, String type, float salary, float commission , boolean syndicate*/) {
+        /*this.name = name;
         this.address = address;
         this.employeeID = employeeID;
         this.type = type;
         this.salary = salary;
         this.commission = commission;
-        this.syndicate = syndicate;
+        this.syndicate = syndicate;*/
     }
 
     public String getName() {
@@ -46,11 +47,11 @@ public class Funcionario {
         this.address = address;
     }
 
-    public int getEmployeeID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -68,6 +69,11 @@ public class Funcionario {
 
     public void setSalary(float salary) {
         this.salary = salary;
+        if(this.type.equals("commissioned")){
+            Scanner input = new Scanner(System.in);
+            System.out.println("Percentual de comissão: ");
+            this.commission = input.nextFloat();
+        }
     }
 
     public boolean isSyndicate() {
@@ -87,7 +93,7 @@ public class Funcionario {
     }
     
     public void ficha(){
-        System.out.println(this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"\n"+
+        System.out.println(this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"%\n"+
                 this.getSalary()+"\n"+this.isSyndicate());
     }
 }
