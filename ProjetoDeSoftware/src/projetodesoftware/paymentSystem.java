@@ -9,11 +9,8 @@ package projetodesoftware;
  *
  * @author Rangel
  */
-public interface Quadrofuncionario {
-    public abstract void add();
-    public abstract void remover();
-    public abstract void list();
-    public abstract void pesquisar();
-    public abstract void changeDetails();
+public interface paymentSystem {
+    
+    public abstract void 
     
 }

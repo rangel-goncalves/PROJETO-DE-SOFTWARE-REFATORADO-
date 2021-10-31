@@ -16,10 +16,16 @@ public class Funcionario {
     private String address;
     private String employeeID;
     private String type;
+    private String paymentMethod;
+    private String SyndicateID;
     
     private float salary;
     private float commission;
     private boolean syndicate;
+    
+    private float frequency;
+    private float sales;
+    private float unionFee;
 
     public Funcionario(/*String name, String address, int employeeID, String type, float salary, float commission , boolean syndicate*/) {
         /*this.name = name;
@@ -96,4 +102,46 @@ public class Funcionario {
         System.out.println(this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"%\n"+
                 this.getSalary()+"\n"+this.isSyndicate());
     }
+
+
+    public float getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(float frequency) {
+        this.frequency = frequency;
+    }
+
+    public float getSales() {
+        return sales;
+    }
+
+    public void setSales(float sales) {
+        this.sales = sales;
+    }
+
+    public float getUnionFee() {
+        return unionFee;
+    }
+
+    public void setUnionFee(float unionFee) {
+        this.unionFee = unionFee;
+    }
+    
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getSyndicateID() {
+        return SyndicateID;
+    }
+
+    public void setSyndicateID(String SyndicateID) {
+        this.SyndicateID = SyndicateID;
+    }
+ 
 }

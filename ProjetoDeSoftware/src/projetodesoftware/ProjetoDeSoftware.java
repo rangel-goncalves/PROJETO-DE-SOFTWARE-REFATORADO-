@@ -71,6 +71,7 @@ public class ProjetoDeSoftware {
                 case 2 -> qf.remover();
                 case 3 -> qf.list();
                 case 4 -> qf.pesquisar();
+                case 5 -> qf.changeDetails();
                 default -> {
                 }
             }
