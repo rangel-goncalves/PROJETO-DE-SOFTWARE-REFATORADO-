@@ -21,7 +21,7 @@ public class ProjetoDeSoftware {
        
         QuadrodeFuncionarios qf = new QuadrodeFuncionarios();
         
-        while(true){
+        /*while(true){
             System.out.println("""
                                MENU:
                                Adicionar funcionario(1)
@@ -43,7 +43,7 @@ public class ProjetoDeSoftware {
                 break;
             }
             
-        }
+        }*/
     }
     
 }

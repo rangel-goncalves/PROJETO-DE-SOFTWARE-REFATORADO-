@@ -27,14 +27,8 @@ public class Funcionario {
     private float sales;
     private float unionFee;
 
-    public Funcionario(/*String name, String address, int employeeID, String type, float salary, float commission , boolean syndicate*/) {
-        /*this.name = name;
-        this.address = address;
-        this.employeeID = employeeID;
-        this.type = type;
-        this.salary = salary;
-        this.commission = commission;
-        this.syndicate = syndicate;*/
+    public Funcionario() {
+
     }
 
     public String getName() {
@@ -98,8 +92,8 @@ public class Funcionario {
         this.commission = commission;
     }
     
-    public void ficha(){
-        System.out.println(this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"%\n"+
+    public String ficha(){
+        return (this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"%\n"+
                 this.getSalary()+"\n"+this.isSyndicate());
     }
 
