@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.table.DefaultTableModel;
 import projetodesoftware.QuadrodeFuncionarios;
 
 /**
@@ -47,7 +48,7 @@ public class AdminMain extends javax.swing.JFrame {
         atxtSearch = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbList = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -185,12 +186,9 @@ public class AdminMain extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Adiministração", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Endereço", "ID", "Tipo"
@@ -204,7 +202,7 @@ public class AdminMain extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbList);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -229,7 +227,7 @@ public class AdminMain extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGap(0, 384, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Geral", jPanel5);
@@ -270,7 +268,7 @@ public class AdminMain extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -492,13 +490,15 @@ public class AdminMain extends javax.swing.JFrame {
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         RemoveEmployee removeemployee = new RemoveEmployee();
-        removeemployee.importQuandroF(qf);
+        DefaultTableModel tbListmain = (DefaultTableModel)tbList.getModel();
+        removeemployee.importQuandroF(qf,tbListmain);
         removeemployee.setVisible(true);
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         AddEmployee addemployee = new AddEmployee();
-        addemployee.importQuandroF(qf);
+        DefaultTableModel tbListmain = (DefaultTableModel)tbList.getModel();
+        addemployee.importQuandroF(qf,tbListmain);
         addemployee.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -596,12 +596,12 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPanel pnlPesquisar;
+    private javax.swing.JTable tbList;
     private javax.swing.JTextField txtCpf;
     // End of variables declaration//GEN-END:variables
 }

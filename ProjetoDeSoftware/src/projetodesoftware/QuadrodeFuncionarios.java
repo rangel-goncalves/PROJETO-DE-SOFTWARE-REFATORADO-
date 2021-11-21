@@ -24,33 +24,34 @@ public class QuadrodeFuncionarios implements Quadrofuncionario {
     }
 
     @Override
-    public void remover(String cpf) {
+    public int remover(String cpf) {
         for(int i = 0; i< f.size(); i++ ){
             if (f.get(i).getEmployeeID().equals(cpf)){   
                 f.remove(i); 
                 }
-                return;
+                return i;
             }
+        return -1;
         }
 
     @Override
-    public void list() {
+    public String list() {
+        String list= "";
         if (f.isEmpty()){
-            System.out.println("Nao possui nenhum funcionario contratado");
+            return ("Nao possui nenhum funcionario contratado");
         }else{
-            System.out.println("************");
             for(int i = 0; i< f.size(); i++ ){
-                    f.get(i).ficha();
-                    System.out.println("************");
+                    list += f.get(i).toString() + "************";
                 }
             }
+            return list;
         }
 
     @Override
     public String pesquisar(String cpf) {  
         for(int i = 0; i< f.size(); i++ ){
             if (f.get(i).getEmployeeID().equals(cpf)){
-                return f.get(i).ficha();
+                return f.get(i).toString();
             }
         }
         return("funcionario nao encontrado");

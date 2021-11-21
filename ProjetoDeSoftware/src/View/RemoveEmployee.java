@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.table.DefaultTableModel;
 import projetodesoftware.QuadrodeFuncionarios;
 
 /**
@@ -18,14 +19,15 @@ public class RemoveEmployee extends javax.swing.JFrame {
      */
     
     QuadrodeFuncionarios qfmain;
-    
+    DefaultTableModel tablemain;
     public RemoveEmployee() {
         initComponents();
         btnremove.setVisible(false);
     }
     
-    public void importQuandroF(QuadrodeFuncionarios qf){
+    public void importQuandroF(QuadrodeFuncionarios qf, DefaultTableModel table){
         qfmain = qf;
+        tablemain = table;
     }
 
     /**
@@ -126,6 +128,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
     private void btnremoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnremoveActionPerformed
         String cpf =txtCpf.getText();
         qfmain.remover(cpf);
+        tablemain.removeRow(qfmain.remover(cpf));
         this.dispose();
     }//GEN-LAST:event_btnremoveActionPerformed
 

@@ -11,8 +11,8 @@ package projetodesoftware;
  */
 public interface Quadrofuncionario {
     public abstract void add(Funcionario p);
-    public abstract void remover(String cpf);
-    public abstract void list();
+    public abstract int remover(String cpf);
+    public abstract String list();
     public abstract String pesquisar(String cpf);
     public abstract void changeDetails(String cpf, Funcionario p);
     public abstract int getIndex(String cpf);

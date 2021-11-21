@@ -13,24 +13,99 @@ import java.util.Scanner;
 public class Funcionario {
     
     private String name ;
-    private String address;
     private String employeeID;
+    private String address;
     private String type;
-    private String paymentMethod;
-    private String SyndicateID;
-    
+    private boolean Syndicate;
     private float salary;
-    private float commission;
-    private boolean syndicate;
-    
-    private float frequency;
-    private float sales;
-    private float unionFee;
-
+    private String paymentMethod;
+  
     public Funcionario() {
+    }
+    
+    public Funcionario(String name, String employeeID, String type) {
+        this.name = name;
+        this.employeeID = employeeID;
+        this.type = type;
 
     }
 
+    public Funcionario(String name, String employeeID, String type, float salary) {
+        this.name = name;
+        this.employeeID = employeeID;
+        this.type = type;
+        this.salary = salary;
+    }
+
+    public Funcionario(String name, String employeeID, String address, String type) {
+        this.name = name;
+        this.address = address;
+        this.employeeID = employeeID;
+        this.type = type;
+        
+    }
+    
+    public Funcionario(String name, String employeeID, String address, String type, float salary) {
+        this.name = name;
+        this.address = address;
+        this.employeeID = employeeID;
+        this.type = type;
+        this.salary = salary;
+    }
+    
+    public Funcionario(String name, String employeeID, String address, String type, String paymentMethod) {
+        this.name = name;
+        this.address = address;
+        this.employeeID = employeeID;
+        this.type = type;
+        this.paymentMethod = paymentMethod;
+    }
+    
+    public Funcionario(String name, String employeeID, String address, String type, String paymentMethod, float salary) {
+        this.name = name;
+        this.address = address;
+        this.employeeID = employeeID;
+        this.type = type;
+        this.paymentMethod = paymentMethod;
+        this.salary = salary;
+    }
+
+    public Funcionario(String name, String employeeID, String address, String type, boolean Syndicate, String paymentMethod, float salary) {
+        this.name = name;
+        this.address = address;
+        this.employeeID = employeeID;
+        this.type = type;
+        this.Syndicate = Syndicate;
+        this.paymentMethod = paymentMethod;
+        this.salary = salary;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    public boolean isSyndicate() {
+        return Syndicate;
+    }
+
+    public void setSyndicate(boolean Syndicate) {
+        this.Syndicate = Syndicate;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    
+    
     public String getName() {
         return name;
     }
@@ -63,79 +138,11 @@ public class Funcionario {
         this.type = type;
     }
 
-    public float getSalary() {
-        return salary;
+    @Override
+    public String toString() {
+        return "Funcionario{" + "name: " + name + ", employeeID: " 
+                + employeeID + ", address: " + address + ", type: " + type + ", Syndicate: " +
+                Syndicate + ", salary: " + salary + ", paymentMethod: " + paymentMethod + '}';
     }
 
-    public void setSalary(float salary) {
-        this.salary = salary;
-        if(this.type.equals("commissioned")){
-            Scanner input = new Scanner(System.in);
-            System.out.println("Percentual de comissão: ");
-            this.commission = input.nextFloat();
-        }
-    }
-
-    public boolean isSyndicate() {
-        return syndicate;
-    }
-
-    public void setSyndicate(boolean syndicate) {
-        this.syndicate = syndicate;
-    }
-
-    public float getCommission() {
-        return commission;
-    }
-
-    public void setCommission(float commission) {
-        this.commission = commission;
-    }
-    
-    public String ficha(){
-        return (this.getName()+"\n"+this.getAddress()+"\n"+this.getEmployeeID()+"\n"+this.getType()+"\n"+this.getCommission()+"%\n"+
-                this.getSalary()+"\n"+this.isSyndicate());
-    }
-
-
-    public float getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(float frequency) {
-        this.frequency = frequency;
-    }
-
-    public float getSales() {
-        return sales;
-    }
-
-    public void setSales(float sales) {
-        this.sales = sales;
-    }
-
-    public float getUnionFee() {
-        return unionFee;
-    }
-
-    public void setUnionFee(float unionFee) {
-        this.unionFee = unionFee;
-    }
-    
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getSyndicateID() {
-        return SyndicateID;
-    }
-
-    public void setSyndicateID(String SyndicateID) {
-        this.SyndicateID = SyndicateID;
-    }
- 
 }

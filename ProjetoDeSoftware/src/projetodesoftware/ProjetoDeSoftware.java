@@ -19,8 +19,24 @@ public class ProjetoDeSoftware {
         
         Scanner input =  new Scanner(System.in);
        
-        QuadrodeFuncionarios qf = new QuadrodeFuncionarios();
-        
+        //QuadrodeFuncionarios qf = new QuadrodeFuncionarios();
+        ArrayList<Funcionario> p = new ArrayList();
+        p.add(new Commissioned(1000, "felipe", "123"));
+        p.add(new Funcionario("rangel","forene", "123", "comi"));
+        System.out.println("*********************");
+        System.out.println(p.get(0).toString()+"\n"+p.get(0).getClass());
+        //System.out.println("*********************");
+        //System.out.println(p.get(1).toString());
+        if(p.get(0) instanceof Salaried){
+                System.out.println(((Salaried) p.get(0)).getSalary());
+            }
+        p.set(0, p.get(1));
+        System.out.println("*********************");
+        System.out.println(p.get(0).toString()+"\n"+p.get(0).getClass());
+        //System.out.println(p.get(0).getClass());   
+        /*Funcionario t = new Salaried(1000, "felipe", "123");
+        ArrayList<Funcionario> g = new ArrayList<Funcionario>();
+        g.add(new Salaried(1000, "felipe", "123")); */
         /*while(true){
             System.out.println("""
                                MENU:
