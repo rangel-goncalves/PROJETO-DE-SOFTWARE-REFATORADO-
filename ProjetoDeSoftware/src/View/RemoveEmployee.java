@@ -127,8 +127,11 @@ public class RemoveEmployee extends javax.swing.JFrame {
 
     private void btnremoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnremoveActionPerformed
         String cpf =txtCpf.getText();
+        int i = qfmain.remover(cpf);
+        tablemain.removeRow(i);
+        System.out.println(i);
         qfmain.remover(cpf);
-        tablemain.removeRow(qfmain.remover(cpf));
+        
         this.dispose();
     }//GEN-LAST:event_btnremoveActionPerformed
 

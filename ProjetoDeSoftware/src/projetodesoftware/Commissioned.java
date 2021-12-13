@@ -10,10 +10,10 @@ package projetodesoftware;
  * @author Rangel
  */
 public class Commissioned extends Funcionario {
-    
+    private String salesHistory="";
     private float commission;
-    private float sales;
-
+    private float sales=0;
+    private PaymentMethod defaultPaymentMethod;
     public Commissioned() {
     }
 
@@ -80,7 +80,15 @@ public class Commissioned extends Funcionario {
         this.commission = commission;
     }
 
+    public String getSalesHistory() {
+        return salesHistory;
+    }
 
+    public void setSalesHistory(String salesHistory) {
+        this.salesHistory += salesHistory+"\n";
+    }
+
+    
 
     public float getCommission() {
         return commission;
@@ -95,7 +103,7 @@ public class Commissioned extends Funcionario {
     }
 
     public void setSales(float sales) {
-        this.sales = sales;
+        this.sales += sales;
     }
 
     @Override

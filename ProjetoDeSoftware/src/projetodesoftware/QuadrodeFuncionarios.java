@@ -5,6 +5,9 @@
  */
 package projetodesoftware;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,12 +15,155 @@ import java.util.Scanner;
  *
  * @author Rangel
  */
-public class QuadrodeFuncionarios implements Quadrofuncionario {
+public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
     
     public ArrayList<Funcionario> f = new ArrayList();
+    public AgendaPagamento ap = new AgendaPagamento();
+    public LocalDate diaAtual = LocalDate.now();
     Scanner input =  new Scanner(System.in);
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return (super.clone()); //To change body of generated methods, choose Tools | Templates.
+    }
   
+    
+    public String rodarAgenda(int grupo){
+        String s ="";
+        switch (grupo) {
+            case 1 -> {
+                for (Funcionario funcionario : f) {
+                    s += ap.pagamentoSalariado(funcionario, diaAtual);
+                }
+            }
+            case 2 -> {
+                for (Funcionario funcionario : f) {
+                    s += ap.pagamentoComissionado(funcionario, diaAtual);
+                }
+            }
+            case 3 -> {
+                for (Funcionario funcionario : f) {
+                    s += ap.pagamentoHorista(funcionario, diaAtual);
+                }
+            }
+            case 0 -> {
+                for (Funcionario funcionario : f) {
+                    s += ap.pagamentoGeral(funcionario, diaAtual);
+                }
+            }
+            default -> {
+            }
+        }
+        return s;
+    }
+    
+    public int AlterarAgandaFuncionario(String cpf, String Method, String timeMethod, String timeMethodWeekDay){
+        int i = getIndex(cpf);
+        String confereAgenda=Method;
+        if(!timeMethod.equals("") && timeMethod != null){
+            confereAgenda += " "+timeMethod;
+        } else{
+            timeMethod = "";
+        }
+        if(!timeMethodWeekDay.equals("")&& timeMethodWeekDay!=null){
+            confereAgenda += " "+timeMethodWeekDay;
+        }else{
+            timeMethodWeekDay = "";
+        }
+        if(!ap.existAgenda(confereAgenda)){
+            System.out.println("entrei" + confereAgenda);
+            return -1;
+        }
+        f.get(i).setPaymentMethod(Method, timeMethod, timeMethodWeekDay); // atualizo os valores diretamente
+        ///////////// atualizo o dia de pagamento ///////////////
+        if(Method.equals("mensal") ||  Method.equals("mensalmente")){
+            if(timeMethod.equals("$") || timeMethod.equals("") || timeMethod== null){
+                LocalDate l2 = f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth());
+                DayOfWeek d = f.get(i).getPaymentDay().withDayOfMonth(l2.getDayOfMonth()).getDayOfWeek();
+                if(d == DayOfWeek.SUNDAY){ /////somente o ultimo dia util(no maximo sabado)
+                    f.get(i).setPaymentDay(f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth()).minusDays(1));
+                }else{
+                    f.get(i).setPaymentDay(f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth()));
+                } 
+            }else { // timeMethod sera o dia do pagamento
+                f.get(i).setPaymentDay(f.get(i).getPaymentDay().withDayOfMonth(Integer.parseInt(timeMethod)));
+            }
+        } else if(Method.equals("semanal") || Method.equals("semanalmente")){     
+            if(timeMethodWeekDay.equals("") || timeMethodWeekDay == null){  //// pago por semana nas sextas
+                if(timeMethod.equals("2")){
+                    f.get(i).setPaymentMethod("bi- semanalmente", "","");
+                    f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusDays(7));
+                } else if(timeMethod.equals("1")){
+                    f.get(i).setPaymentMethod("semanalmente", "","");
+                    f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));
+                }
+            }else{
+                if(timeMethodWeekDay.equals("segunda")){ //// pago por semana nas segundas
+                    if(timeMethod.equals("2")){
+                        System.out.println("entei");
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.MONDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.MONDAY)));
+                    }
+                } else if(timeMethodWeekDay.equals("terca")){
+                  if(timeMethod.equals("2")){
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.TUESDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.TUESDAY)));
+                    }  
+                } else if(timeMethodWeekDay.equals("quarta")){
+                    if(timeMethod.equals("2")){
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)));
+                    } 
+                } else if(timeMethodWeekDay.equals("quinta")){
+                    if(timeMethod.equals("2")){
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.THURSDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.THURSDAY)));
+                    } 
+                } else if(timeMethodWeekDay.equals("sexta")){
+                    if(timeMethod.equals("2")){
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));
+                    } 
+                } else if(timeMethodWeekDay.equals("sabado")){
+                    if(timeMethod.equals("2")){
+                        f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)).plusDays(7));
+                    } else if(timeMethod.equals("1")){
+                        f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
+                        f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)));
+                    } 
+                }
+            }
+        }
+        return 1;
+    }
+
+    public LocalDate getDiaAtual() {
+        return diaAtual;
+        
+    }
+
+    public void setDiaAtual(LocalDate diaAtual) {
+        this.diaAtual = diaAtual;
+    }
   
+    
+    
     @Override
     public void add(Funcionario p) {
         f.add(p);
@@ -28,8 +174,8 @@ public class QuadrodeFuncionarios implements Quadrofuncionario {
         for(int i = 0; i< f.size(); i++ ){
             if (f.get(i).getEmployeeID().equals(cpf)){   
                 f.remove(i); 
-                }
                 return i;
+                } 
             }
         return -1;
         }
@@ -41,7 +187,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario {
             return ("Nao possui nenhum funcionario contratado");
         }else{
             for(int i = 0; i< f.size(); i++ ){
-                    list += f.get(i).toString() + "************";
+                    list += f.get(i).toString() + "\n************\n";
                 }
             }
             return list;

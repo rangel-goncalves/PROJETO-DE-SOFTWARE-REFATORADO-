@@ -6,8 +6,12 @@
 package View;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import projetodesoftware.Commissioned;
 import projetodesoftware.Funcionario;
+import projetodesoftware.Hourly;
 import projetodesoftware.QuadrodeFuncionarios;
+import projetodesoftware.Salaried;
 
 /**
  *
@@ -20,13 +24,21 @@ public class EditEmployee extends javax.swing.JFrame {
      */
     
     QuadrodeFuncionarios qfmain = new QuadrodeFuncionarios();
+    DefaultTableModel tablemain;
     
     public EditEmployee() {
         initComponents();
     }
     
-    public void importQuandroF(QuadrodeFuncionarios qf){
+    public void importQuandroF(QuadrodeFuncionarios qf, DefaultTableModel table){
         qfmain = qf;
+        tablemain = table;
+    }
+    
+    void changeTable(DefaultTableModel table, String[] s, int i){
+        for(int k = 0; k < 4 ;  k++){
+            table.setValueAt(s[k], i, k);
+        }
     }
 
     /**
@@ -38,6 +50,7 @@ public class EditEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSlider1 = new javax.swing.JSlider();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -54,11 +67,19 @@ public class EditEmployee extends javax.swing.JFrame {
         txtIdSind = new javax.swing.JTextField();
         rbtnSynd = new javax.swing.JRadioButton();
         btbEdit = new javax.swing.JButton();
-        txtPaymentMethod = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbtnSalaried = new javax.swing.JRadioButton();
+        rbtnCommissioned = new javax.swing.JRadioButton();
+        rbtnHourly = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtCommission = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        lblDia_semana = new javax.swing.JLabel();
+        txtDiaNSemanas = new javax.swing.JTextField();
+        txtDiaSemana = new javax.swing.JTextField();
+        lblDiaSemana = new javax.swing.JLabel();
+        rbtnMensal = new javax.swing.JRadioButton();
+        rbtnSemanal = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,11 +123,84 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel5.setText("Método");
 
-        jRadioButton1.setText("Assalariado");
+        rbtnSalaried.setText("Assalariado");
+        rbtnSalaried.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSalariedActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("Comissionado");
+        rbtnCommissioned.setText("Comissionado");
+        rbtnCommissioned.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnCommissionedActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("Horista");
+        rbtnHourly.setText("Horista");
+        rbtnHourly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnHourlyActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Comissão(%):");
+
+        lblDia_semana.setText("Dia/nSamanas");
+
+        txtDiaNSemanas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiaNSemanasActionPerformed(evt);
+            }
+        });
+
+        lblDiaSemana.setText("Dia da semana");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(lblDia_semana))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblDiaSemana)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDiaNSemanas, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDia_semana)
+                    .addComponent(txtDiaNSemanas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDiaSemana))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        rbtnMensal.setText("Mensal");
+        rbtnMensal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnMensalActionPerformed(evt);
+            }
+        });
+
+        rbtnSemanal.setText("Semanal");
+        rbtnSemanal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSemanalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,7 +209,7 @@ public class EditEmployee extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnSynd)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -129,29 +223,37 @@ public class EditEmployee extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btbEdit))
+                    .addComponent(rbtnSynd)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUnionFee, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtUnionFee, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblIdSind, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btbEdit)
-                            .addComponent(txtIdSind, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdSind, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton3)
+                            .addComponent(rbtnHourly)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rbtnSalaried)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2)))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                                .addComponent(rbtnCommissioned))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addComponent(rbtnMensal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnSemanal))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,19 +270,29 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbtnMensal)
+                    .addComponent(rbtnSemanal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbtnSalaried)
+                            .addComponent(rbtnCommissioned))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnHourly))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnSynd)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,7 +302,7 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdSind)
                     .addComponent(txtIdSind, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btbEdit)
                 .addContainerGap())
         );
@@ -207,7 +319,7 @@ public class EditEmployee extends javax.swing.JFrame {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,13 +340,29 @@ public class EditEmployee extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
         int i = qfmain.getIndex(txtSearch.getText());
+        if(qfmain.f.get(i) instanceof Commissioned commissioned){
+            
+            txtCommission.setText(String.valueOf(commissioned.getCommission()));
+        }
         if(i!=-1){
             txtName.setText(qfmain.f.get(i).getName());
             txtAddress.setText(qfmain.f.get(i).getAddress());
-            //txtSalary.setText(qfmain.f.get(i).get);
-            txtPaymentMethod.setText(qfmain.f.get(i).getPaymentMethod());
+            txtSalary.setText(String.valueOf(qfmain.f.get(i).getSalary()));
+            if(qfmain.f.get(i).getPaymentMethod().equals("mensal") || qfmain.f.get(i).getPaymentMethod().equals("mensalmente")){
+                rbtnMensal.setSelected(true);
+                rbtnSemanal.setSelected(false);
+                txtDiaNSemanas.setText(qfmain.f.get(i).getTimePaymentMethod());
+            } else if(qfmain.f.get(i).getPaymentMethod().equals("semanal") || qfmain.f.get(i).getPaymentMethod().equals("semanalmente")){
+                rbtnMensal.setSelected(false);
+                rbtnSemanal.setSelected(true);
+                txtDiaNSemanas.setText(qfmain.f.get(i).getTimePaymentMethod());
+                txtDiaSemana.setText(qfmain.f.get(i).getTimeMethodWeekDay());
+            }
+            //txtPaymentMethod.setText(qfmain.f.get(i).getPaymentMethod());
             if(qfmain.f.get(i).isSyndicate()){
                 rbtnSynd.setSelected(true);
+                txtUnionFee.setText(Float.toString(qfmain.f.get(i).getUnionFee()));
+                txtIdSind.setText(qfmain.f.get(i).getSyndicateId());
             }else {
                 //rbtnSynd.setSelected(false);
                 //txtUnionFee.setVisible(false);
@@ -242,6 +370,20 @@ public class EditEmployee extends javax.swing.JFrame {
                 //lblUnionFee.setVisible(false);
                 //lblIdSind.setVisible(false);
             }
+            if(qfmain.f.get(i) instanceof Salaried){
+                    rbtnSalaried.setSelected(true);
+                    rbtnCommissioned.setSelected(false);
+                    rbtnHourly.setSelected(false);
+               } else if(qfmain.f.get(i) instanceof Commissioned){
+                    rbtnSalaried.setSelected(false);
+                    rbtnCommissioned.setSelected(true);
+                    rbtnHourly.setSelected(false);
+               }else if (qfmain.f.get(i) instanceof Hourly){
+                    rbtnSalaried.setSelected(false);
+                    rbtnCommissioned.setSelected(false);
+                    rbtnHourly.setSelected(true);
+               }
+            
         } else {
             JOptionPane.showMessageDialog(null,"Funcionario nao encontrado");
         }
@@ -249,24 +391,201 @@ public class EditEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btbEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbEditActionPerformed
+        
+        String confereAgenda;
+        //
         String cpf = txtSearch.getText();
-        Funcionario p = new Funcionario();
+        Funcionario p;
         int i = qfmain.getIndex(txtSearch.getText());
-        p = qfmain.f.get(i);
-        p.setName(txtName.getText());
-        p.setAddress(txtAddress.getText());
-        p.setPaymentMethod(txtSalary.getText());
-        /*p.setSyndicate(rbtnSynd.isSelected());
-        if (rbtnSynd.isSelected()){
-            p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
-            p.setSyndicateID(txtIdSind.getText());
-        }*/
-        qfmain.changeDetails(cpf, p);
+        String type = "";
+        String Method="",timeMethod="",timeMethodWeekDay="";
+        if(rbtnMensal.isSelected()){
+            //p.setPaymentMethod("mensalmente", txtDiaNSemanas.getText(), "");
+            Method = "mensalmente";
+            timeMethod=txtDiaNSemanas.getText();
+            if(!timeMethod.equals("")){
+                Method = "mensal";
+            }
+            timeMethodWeekDay = "";
+        } else if(rbtnSemanal.isSelected()){
+            //p.setPaymentMethod("semanalmente", txtDiaNSemanas.getText(), txtDiaSemana.getText());
+            Method = "semanalmente";
+            timeMethod=txtDiaNSemanas.getText();
+            if(!timeMethod.equals("")){
+                Method = "semanal";
+            }
+            timeMethodWeekDay=txtDiaSemana.getText();
+        }
+        confereAgenda = Method;
+        if(!timeMethod.equals("") && timeMethod != null){
+            confereAgenda += " "+timeMethod;
+        } else{
+            timeMethod = "";
+        }
+        if(!timeMethodWeekDay.equals("")&& timeMethodWeekDay!=null){
+            confereAgenda += " "+timeMethodWeekDay;
+        }else{
+            timeMethodWeekDay = "";
+        }
+        if(!qfmain.ap.existAgenda(confereAgenda)){
+            System.out.println(confereAgenda);
+            JOptionPane.showMessageDialog(null,"Agenda de pagamento não é valida");
+        }else{
+        if(rbtnSalaried.isSelected()){
+            p = new Salaried();
+            p.setEmployeeID(cpf);
+            p.setName(txtName.getText());
+            p.setAddress(txtAddress.getText());
+            p.setSalary(Float.parseFloat(txtSalary.getText()));
+            p.setType("Salaried");
+            if(rbtnMensal.isSelected()){
+                //p.setPaymentMethod("mensalmente", txtDiaNSemanas.getText(), "");
+                Method = "mensalmente";
+                timeMethod=txtDiaNSemanas.getText();
+            } else if(rbtnSemanal.isSelected()){
+                //p.setPaymentMethod("semanalmente", txtDiaNSemanas.getText(), txtDiaSemana.getText());
+                Method = "semanalmente";
+                timeMethod=txtDiaNSemanas.getText();
+                timeMethodWeekDay=txtDiaSemana.getText();
+            }
+            if(rbtnSynd.isSelected()){
+                p.setSyndicate(true);
+                p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
+                p.setSyndicateId(txtIdSind.getText());
+            }
+            //p.setPaymentMethod(txtSalary.getText());
+            
+            p = (Salaried)p;
+            qfmain.changeDetails(cpf, p);
+            qfmain.AlterarAgandaFuncionario(cpf, Method, timeMethod, timeMethodWeekDay);
+            type = "Salaried";
+        }else if(rbtnCommissioned.isSelected())
+        {
+            p = new Commissioned();
+            p.setEmployeeID(cpf);
+            p.setName(txtName.getText());
+            p.setAddress(txtAddress.getText());
+            p.setSalary(Float.parseFloat(txtSalary.getText()));
+            p.setType("Commissioned");
+            /*if(rbtnMensal.isSelected()){
+                //p.setPaymentMethod("mensalmente", txtDiaNSemanas.getText(), "");
+                Method = "mensalmente";
+                timeMethod=txtDiaNSemanas.getText();
+            } else if(rbtnSemanal.isSelected()){
+                //p.setPaymentMethod("semanalmente", txtDiaNSemanas.getText(), txtDiaSemana.getText());
+                Method = "semanalmente";
+                timeMethod=txtDiaNSemanas.getText();
+                timeMethodWeekDay=txtDiaSemana.getText();
+            }*/
+            if(rbtnSynd.isSelected()){
+                p.setSyndicate(true);
+                p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
+                p.setSyndicateId(txtIdSind.getText());
+            }
+            //p.setPaymentMethod(txtSalary.getText());
+            
+            
+            if (qfmain.f.get(i) instanceof Commissioned && txtCommission.getText().equals(""))
+            {
+                ((Commissioned)p).setCommission(((Commissioned)qfmain.f.get(i)).getCommission());
+            }else{
+                ((Commissioned)p).setCommission(Float.parseFloat(txtCommission.getText()));
+            }
+            
+            p = (Commissioned)p;
+            qfmain.changeDetails(cpf, p);
+            qfmain.AlterarAgandaFuncionario(cpf, Method, timeMethod, timeMethodWeekDay);
+            type = "Commissioned";
+            
+        }else if(rbtnHourly.isSelected()){
+            p = new Hourly();
+            p.setEmployeeID(cpf);
+            p.setName(txtName.getText());
+            p.setAddress(txtAddress.getText());
+            p.setSalary(Float.parseFloat(txtSalary.getText()));
+            p.setType("Hourly");
+            /*if(rbtnMensal.isSelected()){
+                //p.setPaymentMethod("mensalmente", txtDiaNSemanas.getText(), "");
+                Method = "mensalmente";
+                timeMethod=txtDiaNSemanas.getText();
+            } else if(rbtnSemanal.isSelected()){
+                //p.setPaymentMethod("semanalmente", txtDiaNSemanas.getText(), txtDiaSemana.getText());
+                Method = "semanalmente";
+                timeMethod=txtDiaNSemanas.getText();
+                timeMethodWeekDay=txtDiaSemana.getText();
+            }*/
+            if(rbtnSynd.isSelected()){
+                p.setSyndicate(true);
+                p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
+                p.setSyndicateId(txtIdSind.getText());
+            }
+            //p.setPaymentMethod(txtSalary.getText());
+            
+            if(qfmain.f.get(i) instanceof Hourly)
+                {
+                    //((Hourly)p).setWorkedhours(((Hourly)qfmain.f.get(i)).getWorkedhours());
+                    ((Hourly)p).workedhours = ((Hourly)qfmain.f.get(i)).workedhours;
+                }
+            p = (Hourly) p;
+            type = "Hourly";
+            qfmain.changeDetails(cpf, p);
+            qfmain.AlterarAgandaFuncionario(cpf, Method, timeMethod, timeMethodWeekDay);
+        }
+        
+        String[] s = {txtName.getText(),txtAddress.getText(),txtSearch.getText(), type};
+        changeTable(tablemain,s, i);
+        this.dispose();
+     }
     }//GEN-LAST:event_btbEditActionPerformed
 
     private void txtUnionFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnionFeeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUnionFeeActionPerformed
+
+    private void rbtnSalariedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSalariedActionPerformed
+        // TODO add your handling code here:
+        rbtnSalaried.setSelected(true);
+        rbtnCommissioned.setSelected(false);
+        rbtnHourly.setSelected(false);
+    }//GEN-LAST:event_rbtnSalariedActionPerformed
+
+    private void rbtnCommissionedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCommissionedActionPerformed
+        // TODO add your handling code here:
+        rbtnSalaried.setSelected(false);
+        rbtnCommissioned.setSelected(true);
+        rbtnHourly.setSelected(false);
+    }//GEN-LAST:event_rbtnCommissionedActionPerformed
+
+    private void rbtnHourlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnHourlyActionPerformed
+        // TODO add your handling code here:
+        rbtnSalaried.setSelected(false);
+        rbtnCommissioned.setSelected(false);
+        rbtnHourly.setSelected(true);
+    }//GEN-LAST:event_rbtnHourlyActionPerformed
+
+    private void txtDiaNSemanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaNSemanasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiaNSemanasActionPerformed
+
+    private void rbtnSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSemanalActionPerformed
+        // TODO add your handling code here:
+        if(rbtnSemanal.isSelected()){
+            rbtnMensal.setSelected(false);
+            txtDiaSemana.setVisible(true);
+            lblDiaSemana.setVisible(true);
+            lblDia_semana.setText("Semanas:");
+        }
+    }//GEN-LAST:event_rbtnSemanalActionPerformed
+
+    private void rbtnMensalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMensalActionPerformed
+        // TODO add your handling code here:
+        if(rbtnMensal.isSelected()){
+            rbtnSemanal.setSelected(false);
+            txtDiaSemana.setVisible(false);
+            lblDiaSemana.setVisible(false);
+            lblDia_semana.setText("     Dia:     ");
+        }
+    }//GEN-LAST:event_rbtnMensalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,17 +630,26 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JLabel lblDiaSemana;
+    private javax.swing.JLabel lblDia_semana;
     private javax.swing.JLabel lblIdSind;
     private javax.swing.JLabel lblUnionFee;
+    private javax.swing.JRadioButton rbtnCommissioned;
+    private javax.swing.JRadioButton rbtnHourly;
+    private javax.swing.JRadioButton rbtnMensal;
+    private javax.swing.JRadioButton rbtnSalaried;
+    private javax.swing.JRadioButton rbtnSemanal;
     private javax.swing.JRadioButton rbtnSynd;
     private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtCommission;
+    private javax.swing.JTextField txtDiaNSemanas;
+    private javax.swing.JTextField txtDiaSemana;
     private javax.swing.JTextField txtIdSind;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPaymentMethod;
     private javax.swing.JTextField txtSalary;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtUnionFee;
