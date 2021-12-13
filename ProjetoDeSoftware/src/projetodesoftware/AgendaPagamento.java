@@ -24,6 +24,7 @@ public class AgendaPagamento implements  Cloneable{
         agendas.add("semanalmente");
         agendas.add("mensalmente");
         agendas.add("bi- semanalmente");
+        agendas.add("semanal 2 sexta");
     }
     
     public void AddAgenda(String add){
@@ -69,14 +70,16 @@ public class AgendaPagamento implements  Cloneable{
                     if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         System.out.println("discontei "+p.getTaxaServicoSindicato() );
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                 } else if(p.getPaymentMethod().equals("semanalmente")){
                     total =  p.getSalary()/4 + ((Commissioned) p).getSales()/**((Commissioned) p).getCommission()/100*/- p.getUnionFee()/4;
                     ((Commissioned) p).setSales(((Commissioned)p).getSales()*-1);
                     p.setPaymentDay(p.getPaymentDay().plusDays(7));
                     setDiaDePagamento(p.getPaymentDay().plusDays(7));
-                    if(p.getPaymentDay().isAfter(LocalDate.now().with(TemporalAdjusters.lastDayOfMonth()))){
+                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                 } else if(p.getPaymentMethod().equals("mensalmente") || p.getPaymentMethod().equals("mensal")){
                     total =  p.getSalary() + ((Commissioned) p).getSales()/**((Commissioned) p).getCommission()/100*/- p.getUnionFee() - p.getTaxaServicoSindicato();
@@ -85,7 +88,7 @@ public class AgendaPagamento implements  Cloneable{
                     setDiaDePagamento(p.getPaymentDay().plusMonths(1));
                 }
                 ((Commissioned) p).setSalesHistory("Comissão ja recebida: "+comissao);
-                return(p.getName()+":("+p.getEmployeeID()+")->"+this.total +" "+ p.getPaymentTransfer());
+                return (p.getName()+":("+p.getEmployeeID()+")->"+this.total +" "+ p.getPaymentTransfer()+"\n");
                 
             }
         }
@@ -100,15 +103,17 @@ public class AgendaPagamento implements  Cloneable{
                     this.total =  p.getSalary()/2 - p.getUnionFee()/2;
                     p.setPaymentDay(p.getPaymentDay().plusDays(14));
                     setDiaDePagamento(p.getPaymentDay().plusDays(14));
-                    if(p.getPaymentDay().isAfter(LocalDate.now().with(TemporalAdjusters.lastDayOfMonth()))){
+                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                 } else if(p.getPaymentMethod().equals("semanalmente")){
                     this.total =  p.getSalary()/4 - p.getUnionFee()/4;
                     p.setPaymentDay(p.getPaymentDay().plusDays(7));
                     setDiaDePagamento(p.getPaymentDay().plusDays(7));
-                    if(p.getPaymentDay().isAfter(LocalDate.now().with(TemporalAdjusters.lastDayOfMonth()))){
+                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                     
                 } else if(p.getPaymentMethod().equals("mensalmente")|| p.getPaymentMethod().equals("mensal")){
@@ -137,8 +142,9 @@ public class AgendaPagamento implements  Cloneable{
                     ((Hourly) p).FillWorkedhours();
                     p.setPaymentDay(p.getPaymentDay().plusDays(14));
                     setDiaDePagamento(p.getPaymentDay().plusDays(14));
-                    if(p.getPaymentDay().isAfter(LocalDate.now().with(TemporalAdjusters.lastDayOfMonth()))){
+                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                     
                 } else if(p.getPaymentMethod().equals("semanalmente")){
@@ -147,8 +153,9 @@ public class AgendaPagamento implements  Cloneable{
                     ((Hourly) p).FillWorkedhours();
                     p.setPaymentDay(p.getPaymentDay().plusDays(7));
                     setDiaDePagamento(p.getPaymentDay().plusDays(7));
-                    if(p.getPaymentDay().isAfter(LocalDate.now().with(TemporalAdjusters.lastDayOfMonth()))){
+                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
                         this.total -= p.getTaxaServicoSindicato();
+                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }
                     
                 } else if(p.getPaymentMethod().equals("mensalmente")|| p.getPaymentMethod().equals("mensal")){

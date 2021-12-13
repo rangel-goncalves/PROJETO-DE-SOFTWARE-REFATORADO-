@@ -15,7 +15,7 @@ import java.util.Arrays;
  */
 public class Hourly extends Funcionario{
     
-    public Workedhours[] workedhours = new Workedhours[30];
+    public Workedhours[] workedhours = new Workedhours[31];
     
 
     public Hourly() {
@@ -78,7 +78,7 @@ public class Hourly extends Funcionario{
     }
     public void FillWorkedhours(){
         
-        for(int i = 0; i <30; i++){
+        for(int i = 0; i <31; i++){
             this.workedhours[i].chegada = 0;
             this.workedhours[i].saida = 0;
         }
@@ -86,7 +86,7 @@ public class Hourly extends Funcionario{
     }
     
     public void startWorkedhours(){
-        for (int i = 0 ; i < 30 ; i++){
+        for (int i = 0 ; i < 31 ; i++){
             this.workedhours[i] = new Workedhours();
         }
     }

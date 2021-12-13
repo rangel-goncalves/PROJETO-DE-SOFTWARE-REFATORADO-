@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Sindicato {
     
     private boolean Syndicate=false;
-    private String syndicateId;
+    private String syndicateId="";
     private float feeServices=0;
     private float unionFee=0;
     private String historico = "";
@@ -22,7 +22,12 @@ public class Sindicato {
         //this.feeServices += value;
         if(this.Syndicate == true){
           this.feeServices += value;
-          this.historico +=value + " Dia: " + l+"\n";
+          if(value<0){
+              this.historico +="pagamento de taxas: "+value + " Dia: " + l+"\n";
+          }else{
+              this.historico +=value + " Dia: " + l+"\n";
+          }
+          
         }
     }
     

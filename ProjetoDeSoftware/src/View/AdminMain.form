@@ -233,7 +233,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="400" y="10" width="80" height="-1"/>
+                  <AbsoluteConstraints x="560" y="10" width="80" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -246,7 +246,17 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="490" y="10" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="650" y="10" width="-1" height="20"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Dia Atual:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="510" y="10" width="50" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -390,8 +400,9 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea4">
+                        <Component class="javax.swing.JTextArea" name="txtVendasGeral">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
@@ -658,6 +669,9 @@
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
                                 <Component class="javax.swing.JTextPane" name="txtHorlyGeral">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                  </Properties>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -735,6 +749,7 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTextArea" name="txtSalariedGeral">
                                   <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
                                   </Properties>
@@ -815,6 +830,7 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTextArea" name="txtCommissionedGeral">
                                   <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
                                   </Properties>
@@ -992,6 +1008,7 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTextArea" name="txtFolhapagamento">
                                   <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
                                   </Properties>
@@ -1061,6 +1078,7 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTextArea" name="txtAgendas">
                                   <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
                                   </Properties>

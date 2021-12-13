@@ -240,7 +240,6 @@ public class Funcionario implements  Cloneable  {
     
     @Override
     public String toString() {
-        System.out.println(this.getSyndicateId());
         return "Funcionario{" + "name: " + name + ", employeeID: " 
                 + employeeID + ", address: " + address + ", type: " + type + ", Syndicate: " +
                 Syndicate.isSyndicate()+ ", salary: " + salary + ", paymentMethod: " + getPaymentMethod() + " " 

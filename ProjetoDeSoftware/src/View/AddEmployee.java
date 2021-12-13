@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projetodesoftware.Commissioned;
 import projetodesoftware.Funcionario;
@@ -56,6 +57,10 @@ public class AddEmployee extends javax.swing.JFrame {
         rbtnSyndSalaried = new javax.swing.JRadioButton();
         txtMethodSalaried = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        rbtnChequeCorreio1 = new javax.swing.JRadioButton();
+        rbtnChequeMaos1 = new javax.swing.JRadioButton();
+        rbtnDepositoBancario1 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         bntAddHourly = new javax.swing.JButton();
@@ -69,6 +74,10 @@ public class AddEmployee extends javax.swing.JFrame {
         rbtnSyndHourly = new javax.swing.JRadioButton();
         txtMethodHourly = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        rbtnDepositoBancario2 = new javax.swing.JRadioButton();
+        rbtnChequeMaos2 = new javax.swing.JRadioButton();
+        rbtnChequeCorreio2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         txtCommission = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -84,6 +93,10 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         txtMethodCommissioned = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        rbtnDepositoBancario3 = new javax.swing.JRadioButton();
+        rbtnChequeMaos3 = new javax.swing.JRadioButton();
+        rbtnChequeCorreio3 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -105,7 +118,13 @@ public class AddEmployee extends javax.swing.JFrame {
 
         rbtnSyndSalaried.setText("Sindicato");
         rbtnSyndSalaried.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        rbtnSyndSalaried.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSyndSalariedActionPerformed(evt);
+            }
+        });
 
+        txtMethodSalaried.setEditable(false);
         txtMethodSalaried.setText("mensalmente");
         txtMethodSalaried.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +134,30 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel23.setText("Método");
 
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel27.setText("Pagamento via:");
+
+        rbtnChequeCorreio1.setText("Cheque pelos correios");
+        rbtnChequeCorreio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeCorreio1ActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeMaos1.setText("Cheque em mãos");
+        rbtnChequeMaos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeMaos1ActionPerformed(evt);
+            }
+        });
+
+        rbtnDepositoBancario1.setText("Deposito Bancario");
+        rbtnDepositoBancario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDepositoBancario1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,10 +165,6 @@ public class AddEmployee extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnSyndSalaried)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(bntAddSalaried))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -137,8 +176,19 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMethodSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(txtMethodSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbtnSyndSalaried)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(bntAddSalaried))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnChequeMaos1)
+                            .addComponent(rbtnChequeCorreio1)
+                            .addComponent(rbtnDepositoBancario1))))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -151,12 +201,12 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(txtAddressSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(11, Short.MAX_VALUE)))
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIDSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,11 +218,19 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMethodSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnChequeCorreio1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtnChequeMaos1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnDepositoBancario1)
+                .addGap(16, 16, 16)
                 .addComponent(rbtnSyndSalaried)
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntAddSalaried)
-                .addGap(45, 45, 45))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -183,7 +241,7 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtAddressSalaried, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(250, Short.MAX_VALUE)))
+                    .addContainerGap(284, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Assalariado", jPanel1);
@@ -197,6 +255,12 @@ public class AddEmployee extends javax.swing.JFrame {
             }
         });
 
+        txtNameHourly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameHourlyActionPerformed(evt);
+            }
+        });
+
         jLabel19.setText("Salario");
 
         jLabel20.setText("Endereço");
@@ -206,6 +270,7 @@ public class AddEmployee extends javax.swing.JFrame {
         rbtnSyndHourly.setText("Sindicato");
         rbtnSyndHourly.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        txtMethodHourly.setEditable(false);
         txtMethodHourly.setText("semanalmente");
         txtMethodHourly.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +280,30 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel25.setText("Metodo");
 
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel26.setText("Pagamento via:");
+
+        rbtnDepositoBancario2.setText("Deposito Bancario");
+        rbtnDepositoBancario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDepositoBancario2ActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeMaos2.setText("Cheque em mãos");
+        rbtnChequeMaos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeMaos2ActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeCorreio2.setText("Cheque pelos correios");
+        rbtnChequeCorreio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeCorreio2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -222,37 +311,36 @@ public class AddEmployee extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 1, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIDHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSalaryHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMethodHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnSyndHourly)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(bntAddHourly)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSalaryHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMethodHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAddressHourly, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNameHourly, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addComponent(txtAddressHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIDHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNameHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnChequeMaos2)
+                            .addComponent(rbtnChequeCorreio2)
+                            .addComponent(rbtnDepositoBancario2)))
+                    .addComponent(rbtnSyndHourly)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(bntAddHourly)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +353,7 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAddressHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIDHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,11 +365,20 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMethodHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(rbtnSyndHourly)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(rbtnChequeCorreio2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnChequeMaos2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnDepositoBancario2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(rbtnSyndHourly)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntAddHourly)
-                .addGap(52, 52, 52))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Horista", jPanel3);
@@ -310,12 +407,42 @@ public class AddEmployee extends javax.swing.JFrame {
 
         rbtnSyndCommissioned.setText("Sindicato");
         rbtnSyndCommissioned.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        rbtnSyndCommissioned.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSyndCommissionedActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Comissão(%)");
 
         jLabel24.setText("Metodo");
 
+        txtMethodCommissioned.setEditable(false);
         txtMethodCommissioned.setText("bi- semanalmente");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel28.setText("Pagamento via:");
+
+        rbtnDepositoBancario3.setText("Deposito Bancario");
+        rbtnDepositoBancario3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDepositoBancario3ActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeMaos3.setText("Cheque em mãos");
+        rbtnChequeMaos3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeMaos3ActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeCorreio3.setText("Cheque pelos correios");
+        rbtnChequeCorreio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeCorreio3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -324,10 +451,6 @@ public class AddEmployee extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnSyndCommissioned)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(bntAddCommissioned))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,8 +471,18 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addGap(1, 1, 1)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbtnSyndCommissioned))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnChequeMaos3)
+                            .addComponent(rbtnChequeCorreio3)
+                            .addComponent(rbtnDepositoBancario3)
+                            .addComponent(bntAddCommissioned))))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -362,16 +495,16 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(txtAddressCommissioned, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(11, Short.MAX_VALUE)))
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDCommissioned, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIDCommissioned, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSalaryCommissioned, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,11 +516,21 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(rbtnSyndCommissioned)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bntAddCommissioned)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(rbtnChequeCorreio3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnChequeMaos3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnDepositoBancario3)
+                        .addGap(21, 21, 21)
+                        .addComponent(bntAddCommissioned))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbtnSyndCommissioned)
+                        .addGap(28, 28, 28))))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -398,7 +541,7 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtAddressCommissioned, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(250, Short.MAX_VALUE)))
+                    .addContainerGap(284, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Comissionado", jPanel2);
@@ -408,15 +551,15 @@ public class AddEmployee extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -436,6 +579,15 @@ public class AddEmployee extends javax.swing.JFrame {
         if(rbtnSyndSalaried.isSelected()){
             p.setSyndicateId("");
         }
+        if(rbtnChequeCorreio3.isSelected()){
+            p.setPaymentTransfer("Cheque pelos correios");
+        }else if(rbtnChequeMaos3.isSelected()){
+            p.setPaymentTransfer("Cheque em maõs");
+        } else if(rbtnDepositoBancario3.isSelected()){
+            p.setPaymentTransfer("Deposito Bancario");
+        }else{
+            JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
+        }
         qfmain.add(p);
         
         String[] s = new String[]{txtNameCommissioned.getText(),txtAddressCommissioned.getText(),txtIDCommissioned.getText(),"Commissioned"};
@@ -451,6 +603,16 @@ public class AddEmployee extends javax.swing.JFrame {
         if(rbtnSyndSalaried.isSelected()){
             p.setSyndicateId("");
         }
+        if(rbtnChequeCorreio1.isSelected()){
+            p.setPaymentTransfer("Cheque pelos correios");
+        }else if(rbtnChequeMaos1.isSelected()){
+            p.setPaymentTransfer("Cheque em maõs");
+        } else if(rbtnDepositoBancario1.isSelected()){
+            p.setPaymentTransfer("Deposito Bancario");
+        }else{
+            JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
+        }
+        
         qfmain.add(p);
         
         String[] s = new String[]{txtNameSalaried.getText(),txtAddressSalaried.getText(),txtIDSalaried.getText(),"salaried"};
@@ -466,6 +628,15 @@ public class AddEmployee extends javax.swing.JFrame {
         if(rbtnSyndSalaried.isSelected()){
             p.setSyndicateId("");
         }
+        if(rbtnChequeCorreio2.isSelected()){
+            p.setPaymentTransfer("Cheque pelos correios");
+        }else if(rbtnChequeMaos2.isSelected()){
+            p.setPaymentTransfer("Cheque em maõs");
+        } else if(rbtnDepositoBancario2.isSelected()){
+            p.setPaymentTransfer("Deposito Bancario");
+        }else{
+            JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
+        }
         qfmain.add(p);
 
         String[] s = new String[]{txtNameHourly.getText(),txtAddressHourly.getText(),txtIDHourly.getText(),"Hourly"};
@@ -480,6 +651,73 @@ public class AddEmployee extends javax.swing.JFrame {
     private void txtMethodSalariedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMethodSalariedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMethodSalariedActionPerformed
+
+    private void txtNameHourlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameHourlyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameHourlyActionPerformed
+
+    private void rbtnSyndSalariedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSyndSalariedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnSyndSalariedActionPerformed
+
+    private void rbtnChequeCorreio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeCorreio1ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeMaos1.setSelected(false);
+        rbtnDepositoBancario1.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeCorreio1ActionPerformed
+
+    private void rbtnChequeCorreio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeCorreio2ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeMaos2.setSelected(false);
+        rbtnDepositoBancario2.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeCorreio2ActionPerformed
+
+    private void rbtnDepositoBancario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDepositoBancario2ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio2.setSelected(false);
+        rbtnChequeMaos2.setSelected(false);
+    }//GEN-LAST:event_rbtnDepositoBancario2ActionPerformed
+
+    private void rbtnDepositoBancario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDepositoBancario3ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio3.setSelected(false);
+        rbtnChequeMaos3.setSelected(false);
+    }//GEN-LAST:event_rbtnDepositoBancario3ActionPerformed
+
+    private void rbtnChequeCorreio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeCorreio3ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeMaos3.setSelected(false);
+        rbtnDepositoBancario3.setSelected(false);
+                
+    }//GEN-LAST:event_rbtnChequeCorreio3ActionPerformed
+
+    private void rbtnSyndCommissionedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSyndCommissionedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnSyndCommissionedActionPerformed
+
+    private void rbtnChequeMaos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeMaos3ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio3.setSelected(false);
+        rbtnDepositoBancario3.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeMaos3ActionPerformed
+
+    private void rbtnChequeMaos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeMaos2ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio2.setSelected(false);
+        rbtnDepositoBancario2.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeMaos2ActionPerformed
+
+    private void rbtnChequeMaos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeMaos1ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio1.setSelected(false);
+        rbtnDepositoBancario1.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeMaos1ActionPerformed
+
+    private void rbtnDepositoBancario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDepositoBancario1ActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio1.setSelected(false);
+        rbtnChequeMaos1.setSelected(false);;
+    }//GEN-LAST:event_rbtnDepositoBancario1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -533,6 +771,9 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -540,6 +781,15 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton rbtnChequeCorreio1;
+    private javax.swing.JRadioButton rbtnChequeCorreio2;
+    private javax.swing.JRadioButton rbtnChequeCorreio3;
+    private javax.swing.JRadioButton rbtnChequeMaos1;
+    private javax.swing.JRadioButton rbtnChequeMaos2;
+    private javax.swing.JRadioButton rbtnChequeMaos3;
+    private javax.swing.JRadioButton rbtnDepositoBancario1;
+    private javax.swing.JRadioButton rbtnDepositoBancario2;
+    private javax.swing.JRadioButton rbtnDepositoBancario3;
     private javax.swing.JRadioButton rbtnSyndCommissioned;
     private javax.swing.JRadioButton rbtnSyndHourly;
     private javax.swing.JRadioButton rbtnSyndSalaried;

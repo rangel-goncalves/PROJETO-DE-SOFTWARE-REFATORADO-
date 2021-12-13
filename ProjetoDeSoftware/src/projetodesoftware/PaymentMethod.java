@@ -10,9 +10,9 @@ package projetodesoftware;
  * @author Rangel
  */
 public class PaymentMethod {
-    public String method;
-    public String timeMethod;
-    public String timeMethodWeekDay;
+    public String method="";
+    public String timeMethod="";
+    public String timeMethodWeekDay="";
     
     
     public String getDetails(){

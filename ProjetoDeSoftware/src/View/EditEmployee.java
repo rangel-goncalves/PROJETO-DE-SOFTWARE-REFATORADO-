@@ -80,6 +80,10 @@ public class EditEmployee extends javax.swing.JFrame {
         lblDiaSemana = new javax.swing.JLabel();
         rbtnMensal = new javax.swing.JRadioButton();
         rbtnSemanal = new javax.swing.JRadioButton();
+        jLabel28 = new javax.swing.JLabel();
+        rbtnChequeCorreio = new javax.swing.JRadioButton();
+        rbtnChequeMaos = new javax.swing.JRadioButton();
+        rbtnDepositoBancario = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -202,6 +206,30 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         });
 
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel28.setText("Pagamento via:");
+
+        rbtnChequeCorreio.setText("Cheque pelos correios");
+        rbtnChequeCorreio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeCorreioActionPerformed(evt);
+            }
+        });
+
+        rbtnChequeMaos.setText("Cheque em mãos");
+        rbtnChequeMaos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnChequeMaosActionPerformed(evt);
+            }
+        });
+
+        rbtnDepositoBancario.setText("Deposito Bancario");
+        rbtnDepositoBancario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDepositoBancarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,7 +253,15 @@ public class EditEmployee extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(btbEdit))
-                    .addComponent(rbtnSynd)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbtnSynd))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnChequeMaos)
+                            .addComponent(rbtnChequeCorreio)
+                            .addComponent(rbtnDepositoBancario)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUnionFee, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,7 +289,7 @@ public class EditEmployee extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +317,6 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtCommission, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -291,10 +326,20 @@ public class EditEmployee extends javax.swing.JFrame {
                         .addComponent(rbtnHourly))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(rbtnChequeCorreio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnChequeMaos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbtnDepositoBancario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addComponent(rbtnSynd)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnSynd)
-                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUnionFee)
                     .addComponent(txtUnionFee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -319,7 +364,7 @@ public class EditEmployee extends javax.swing.JFrame {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,11 +397,18 @@ public class EditEmployee extends javax.swing.JFrame {
                 rbtnMensal.setSelected(true);
                 rbtnSemanal.setSelected(false);
                 txtDiaNSemanas.setText(qfmain.f.get(i).getTimePaymentMethod());
+                txtDiaSemana.setVisible(false);
+                lblDiaSemana.setVisible(false);
             } else if(qfmain.f.get(i).getPaymentMethod().equals("semanal") || qfmain.f.get(i).getPaymentMethod().equals("semanalmente")){
                 rbtnMensal.setSelected(false);
                 rbtnSemanal.setSelected(true);
                 txtDiaNSemanas.setText(qfmain.f.get(i).getTimePaymentMethod());
                 txtDiaSemana.setText(qfmain.f.get(i).getTimeMethodWeekDay());
+            } else if(qfmain.f.get(i).getPaymentMethod().equals("bi- semanalmente")){
+                rbtnMensal.setSelected(false);
+                rbtnSemanal.setSelected(true);
+                txtDiaNSemanas.setText("2");
+                txtDiaSemana.setText("sexta"); 
             }
             //txtPaymentMethod.setText(qfmain.f.get(i).getPaymentMethod());
             if(qfmain.f.get(i).isSyndicate()){
@@ -382,7 +434,20 @@ public class EditEmployee extends javax.swing.JFrame {
                     rbtnSalaried.setSelected(false);
                     rbtnCommissioned.setSelected(false);
                     rbtnHourly.setSelected(true);
-               }
+            }
+            if(qfmain.f.get(i).getPaymentTransfer().equals("Cheque pelos correios")){
+                rbtnChequeCorreio.setSelected(true);
+                rbtnChequeMaos.setSelected(false);
+                rbtnDepositoBancario.setSelected(false);
+            }else if(qfmain.f.get(i).getPaymentTransfer().equals("Cheque em maõs")){
+                rbtnChequeCorreio.setSelected(false);
+                rbtnChequeMaos.setSelected(true);
+                rbtnDepositoBancario.setSelected(false);
+            }else if(qfmain.f.get(i).getPaymentTransfer().equals("Deposito Bancario")){
+                rbtnChequeCorreio.setSelected(false);
+                rbtnChequeMaos.setSelected(false);
+                rbtnDepositoBancario.setSelected(true);
+            }
             
         } else {
             JOptionPane.showMessageDialog(null,"Funcionario nao encontrado");
@@ -438,7 +503,7 @@ public class EditEmployee extends javax.swing.JFrame {
             p.setAddress(txtAddress.getText());
             p.setSalary(Float.parseFloat(txtSalary.getText()));
             p.setType("Salaried");
-            if(rbtnMensal.isSelected()){
+            /*if(rbtnMensal.isSelected()){
                 //p.setPaymentMethod("mensalmente", txtDiaNSemanas.getText(), "");
                 Method = "mensalmente";
                 timeMethod=txtDiaNSemanas.getText();
@@ -447,13 +512,20 @@ public class EditEmployee extends javax.swing.JFrame {
                 Method = "semanalmente";
                 timeMethod=txtDiaNSemanas.getText();
                 timeMethodWeekDay=txtDiaSemana.getText();
-            }
+            }*/
             if(rbtnSynd.isSelected()){
                 p.setSyndicate(true);
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
             }
-            //p.setPaymentMethod(txtSalary.getText());
+            // edit transferencia de pagamento
+            if(rbtnChequeCorreio.isSelected()){
+                p.setPaymentTransfer("Cheque pelos correios");
+            }else if(rbtnChequeMaos.isSelected()){
+                p.setPaymentTransfer("Cheque em maõs");
+            } else if(rbtnDepositoBancario.isSelected()){
+                p.setPaymentTransfer("Deposito Bancario");
+            }
             
             p = (Salaried)p;
             qfmain.changeDetails(cpf, p);
@@ -482,12 +554,25 @@ public class EditEmployee extends javax.swing.JFrame {
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
             }
-            //p.setPaymentMethod(txtSalary.getText());
+            // edit transferencia de pagamento
+            if(rbtnChequeCorreio.isSelected()){
+                p.setPaymentTransfer("Cheque pelos correios");
+            }else if(rbtnChequeMaos.isSelected()){
+                p.setPaymentTransfer("Cheque em maõs");
+            } else if(rbtnDepositoBancario.isSelected()){
+                p.setPaymentTransfer("Deposito Bancario");
+            }
             
             
-            if (qfmain.f.get(i) instanceof Commissioned && txtCommission.getText().equals(""))
+            if (qfmain.f.get(i) instanceof Commissioned || txtCommission.getText().equals(""))
             {
+                float sales = ((Commissioned)qfmain.f.get(i)).getSales();
+                String historico = ((Commissioned)qfmain.f.get(i)).getSalesHistory();
                 ((Commissioned)p).setCommission(((Commissioned)qfmain.f.get(i)).getCommission());
+                ((Commissioned)p).setSales(sales);
+                System.out.println(sales);
+                ((Commissioned)p).setSalesHistory(historico);
+                System.out.println(historico);
             }else{
                 ((Commissioned)p).setCommission(Float.parseFloat(txtCommission.getText()));
             }
@@ -519,7 +604,14 @@ public class EditEmployee extends javax.swing.JFrame {
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
             }
-            //p.setPaymentMethod(txtSalary.getText());
+            // edit transferencia de pagamento
+            if(rbtnChequeCorreio.isSelected()){
+                p.setPaymentTransfer("Cheque pelos correios");
+            }else if(rbtnChequeMaos.isSelected()){
+                p.setPaymentTransfer("Cheque em maõs");
+            } else if(rbtnDepositoBancario.isSelected()){
+                p.setPaymentTransfer("Deposito Bancario");
+            }
             
             if(qfmain.f.get(i) instanceof Hourly)
                 {
@@ -587,6 +679,25 @@ public class EditEmployee extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rbtnMensalActionPerformed
 
+    private void rbtnChequeCorreioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeCorreioActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeMaos.setSelected(false);
+        rbtnDepositoBancario.setSelected(false);
+
+    }//GEN-LAST:event_rbtnChequeCorreioActionPerformed
+
+    private void rbtnChequeMaosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnChequeMaosActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio.setSelected(false);
+        rbtnDepositoBancario.setSelected(false);
+    }//GEN-LAST:event_rbtnChequeMaosActionPerformed
+
+    private void rbtnDepositoBancarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDepositoBancarioActionPerformed
+        // TODO add your handling code here:
+        rbtnChequeCorreio.setSelected(false);
+        rbtnChequeMaos.setSelected(false);
+    }//GEN-LAST:event_rbtnDepositoBancarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -627,6 +738,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -638,7 +750,10 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel lblDia_semana;
     private javax.swing.JLabel lblIdSind;
     private javax.swing.JLabel lblUnionFee;
+    private javax.swing.JRadioButton rbtnChequeCorreio;
+    private javax.swing.JRadioButton rbtnChequeMaos;
     private javax.swing.JRadioButton rbtnCommissioned;
+    private javax.swing.JRadioButton rbtnDepositoBancario;
     private javax.swing.JRadioButton rbtnHourly;
     private javax.swing.JRadioButton rbtnMensal;
     private javax.swing.JRadioButton rbtnSalaried;

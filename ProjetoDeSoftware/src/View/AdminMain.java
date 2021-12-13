@@ -6,7 +6,11 @@
 package View;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
@@ -66,6 +70,7 @@ public class AdminMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtData = new javax.swing.JTextField();
         btnData = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbList = new javax.swing.JTable();
@@ -73,7 +78,7 @@ public class AdminMain extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txtVendasGeral = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         txtCpfVendas = new javax.swing.JTextField();
         btnPesquisarVendas = new javax.swing.JButton();
@@ -274,7 +279,7 @@ public class AdminMain extends javax.swing.JFrame {
                 txtDataActionPerformed(evt);
             }
         });
-        jPanel1.add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 80, -1));
+        jPanel1.add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, 80, -1));
 
         btnData.setText("Alterar");
         btnData.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +287,10 @@ public class AdminMain extends javax.swing.JFrame {
                 btnDataActionPerformed(evt);
             }
         });
-        jPanel1.add(btnData, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+        jPanel1.add(btnData, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 20));
+
+        jLabel10.setText("Dia Atual:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 50, 20));
 
         jTabbedPane1.addTab("Adiministração", jPanel1);
 
@@ -319,9 +327,10 @@ public class AdminMain extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Quadro de funcionarios", jPanel2);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane9.setViewportView(jTextArea4);
+        txtVendasGeral.setEditable(false);
+        txtVendasGeral.setColumns(20);
+        txtVendasGeral.setRows(5);
+        jScrollPane9.setViewportView(txtVendasGeral);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -465,6 +474,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        txtHorlyGeral.setEditable(false);
         jScrollPane7.setViewportView(txtHorlyGeral);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -501,6 +511,7 @@ public class AdminMain extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Diaristas", jPanel7);
 
+        txtSalariedGeral.setEditable(false);
         txtSalariedGeral.setColumns(20);
         txtSalariedGeral.setRows(5);
         jScrollPane11.setViewportView(txtSalariedGeral);
@@ -539,6 +550,7 @@ public class AdminMain extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Assalariados", jPanel8);
 
+        txtCommissionedGeral.setEditable(false);
         txtCommissionedGeral.setColumns(20);
         txtCommissionedGeral.setRows(5);
         jScrollPane17.setViewportView(txtCommissionedGeral);
@@ -637,6 +649,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        txtFolhapagamento.setEditable(false);
         txtFolhapagamento.setColumns(20);
         txtFolhapagamento.setRows(5);
         jScrollPane3.setViewportView(txtFolhapagamento);
@@ -676,6 +689,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        txtAgendas.setEditable(false);
         txtAgendas.setColumns(20);
         txtAgendas.setRows(5);
         jScrollPane4.setViewportView(txtAgendas);
@@ -939,7 +953,7 @@ public class AdminMain extends javax.swing.JFrame {
         int i  = qf.getIndex(txtCpfVendas.getText());
         if(i!= -1){
             pnlRegistarVenda.setVisible(true);
-            txtVendasInd.setText(((Commissioned)qf.f.get(i)).getSalesHistory()+"\nTotal a receber: "+
+            txtVendasInd.setText(qf.f.get(i).getName()+"\n"+((Commissioned)qf.f.get(i)).getSalesHistory()+"\nTotal a receber: "+
                                     ((Commissioned)qf.f.get(i)).getSales()*((Commissioned)qf.f.get(i)).getCommission());
         }
     }//GEN-LAST:event_btnPesquisarVendasActionPerformed
@@ -984,7 +998,15 @@ public class AdminMain extends javax.swing.JFrame {
 
     private void btnRegistarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarVendaActionPerformed
         // TODO add your handling code here:
+        String cpf =txtCpfVendas.getText();
+        int i = qf.getIndex(cpf);
         v.lancarVenda(txtCpfVendas.getText(), Float.parseFloat(txtValorVenda.getText()));
+        LocalDateTime l1 = LocalDateTime.of(qf.getDiaAtual(), LocalTime.now()); // retirando nos mili/nano segundos
+        DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE_TIME;
+        txtVendasGeral.setText(txtVendasGeral.getText()+ "\n"+qf.f.get(i).getName()+"| Cpf: "+qf.f.get(i).getEmployeeID()
+                               +"| Valor:"+txtValorVenda.getText()+"| Horario: "+l1.truncatedTo(ChronoUnit.SECONDS).format(dtf));
+        txtVendasInd.setText(qf.f.get(i).getName()+"\n"+((Commissioned)qf.f.get(i)).getSalesHistory()+"\nTotal a receber: "+
+                                    ((Commissioned)qf.f.get(i)).getSales()*((Commissioned)qf.f.get(i)).getCommission());
     }//GEN-LAST:event_btnRegistarVendaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -996,7 +1018,7 @@ public class AdminMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         String s = qf.rodarAgenda(0);
         if(s.equals("")){
-            s = "Nunhum funcionario recebe hj";
+            s = "Nunhum funcionario recebe hoje";
         }
         txtFolhapagamento.setText(s);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1184,6 +1206,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1230,7 +1253,6 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTabbedPane jTabbedPane8;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JPanel pnlPesquisar;
     private javax.swing.JPanel pnlRegistarVenda;
     private javax.swing.JPanel pnlSind;
@@ -1254,6 +1276,7 @@ public class AdminMain extends javax.swing.JFrame {
     private javax.swing.JTextArea txtSindDetails;
     private javax.swing.JTextField txtTaxaSind;
     private javax.swing.JTextField txtValorVenda;
+    private javax.swing.JTextArea txtVendasGeral;
     private javax.swing.JTextArea txtVendasInd;
     // End of variables declaration//GEN-END:variables
 }

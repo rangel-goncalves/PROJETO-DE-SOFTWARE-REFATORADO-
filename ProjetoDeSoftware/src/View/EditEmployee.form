@@ -37,7 +37,7 @@
                       <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,7 +99,18 @@
                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                           <Component id="btbEdit" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="rbtnSynd" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel28" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="rbtnSynd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rbtnChequeMaos" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnChequeCorreio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtnDepositoBancario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblUnionFee" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -135,7 +146,7 @@
                           <Component id="txtCommission" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="91" max="32767" attributes="0"/>
+                  <EmptySpace pref="121" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,14 +190,27 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="rbtnHourly" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel4" max="32767" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rbtnChequeCorreio" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="rbtnChequeMaos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="rbtnDepositoBancario" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel28" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                          <Component id="rbtnSynd" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="rbtnSynd" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblUnionFee" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtUnionFee" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -376,6 +400,38 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnSemanalActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel28">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="9" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Pagamento via:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtnChequeCorreio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cheque pelos correios"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnChequeCorreioActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtnChequeMaos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cheque em m&#xe3;os"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnChequeMaosActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtnDepositoBancario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Deposito Bancario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnDepositoBancarioActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
