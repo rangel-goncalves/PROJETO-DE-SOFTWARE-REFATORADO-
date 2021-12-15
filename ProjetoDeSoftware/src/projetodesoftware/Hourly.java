@@ -16,7 +16,6 @@ import java.util.Arrays;
 public class Hourly extends Funcionario{
     
     public Workedhours[] workedhours = new Workedhours[31];
-    
 
     public Hourly() {
         startWorkedhours();
@@ -65,22 +64,29 @@ public class Hourly extends Funcionario{
         }
         return total;
     }
+    public float getExtraHours() {
+        int total=0;
+        for (Workedhours workedhour : workedhours) {
+            total += workedhour.getExtra();
+        }
+        return total;
+    }
 
     public void setWorkedhours(int chegada,int saida, int dia ) {
-        this.workedhours[dia-1].chegada = chegada;
-        this.workedhours[dia-1].saida = saida;
+        this.workedhours[dia-1].setChegada(chegada);
+        this.workedhours[dia-1].setSaida(saida);
  
     }
     
     public void setWorkedhours(LocalDateTime chegada,LocalDateTime saida ) {
-        this.workedhours[chegada.getDayOfMonth()-1].chegada = chegada.getHour();
-        this.workedhours[chegada.getDayOfMonth()-1].saida = saida.getHour();    
+        this.workedhours[chegada.getDayOfMonth()-1].setChegada(chegada.getHour());
+        this.workedhours[chegada.getDayOfMonth()-1].setSaida(saida.getHour());    
     }
     public void FillWorkedhours(){
         
         for(int i = 0; i <31; i++){
-            this.workedhours[i].chegada = 0;
-            this.workedhours[i].saida = 0;
+            this.workedhours[i].setChegada(0);
+            this.workedhours[i].setSaida(0);
         }
         
     }

@@ -1082,7 +1082,7 @@ public class AdminMain extends javax.swing.JFrame {
                     ((Hourly)qf.f.get(i)).setWorkedhours(chegada, saida, qf.getDiaAtual().getDayOfMonth());
                 
                     txtResumoPonto.setText("horas trabalhados hoje: " + (saida - chegada)+ "\n"+"Total de horas trabalhadas desse funcionario: "+
-                                           ((Hourly)qf.f.get(i)).getWorkedhours());
+                                           (((Hourly)qf.f.get(i)).getWorkedhours()+((Hourly)qf.f.get(i)).getExtraHours()));
                 }
             } else {
                 txtResumoPonto.setText("funcionario não é horista");

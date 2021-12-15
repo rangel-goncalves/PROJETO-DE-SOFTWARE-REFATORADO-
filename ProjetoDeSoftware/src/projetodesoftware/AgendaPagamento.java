@@ -137,8 +137,8 @@ public class AgendaPagamento implements  Cloneable{
                 if(cur.equals(p.getPaymentDay()))
                 {
                     if(p.getPaymentMethod().equals("bi- semanalmente")){
-                    this.total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getWorkedhours()%8) * p.getSalary()*1.5f
-                            - p.getUnionFee()/2;
+                    this.total =  (((Hourly) p).getWorkedhours() * p.getSalary()) + ((((Hourly) p).getExtraHours()) * p.getSalary()*1.5f)
+                            - (p.getUnionFee()/2);
                     ((Hourly) p).FillWorkedhours();
                     p.setPaymentDay(p.getPaymentDay().plusDays(14));
                     setDiaDePagamento(p.getPaymentDay().plusDays(14));
@@ -148,8 +148,8 @@ public class AgendaPagamento implements  Cloneable{
                     }
                     
                 } else if(p.getPaymentMethod().equals("semanalmente")){
-                    this.total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getWorkedhours()%8) * p.getSalary()*1.5f
-                            - p.getUnionFee()/4;
+                    this.total =  (((Hourly) p).getWorkedhours() * p.getSalary()) + ((((Hourly) p).getExtraHours()) * (p.getSalary()*1.5f))
+                            - (p.getUnionFee()/4);
                     ((Hourly) p).FillWorkedhours();
                     p.setPaymentDay(p.getPaymentDay().plusDays(7));
                     setDiaDePagamento(p.getPaymentDay().plusDays(7));
@@ -159,16 +159,12 @@ public class AgendaPagamento implements  Cloneable{
                     }
                     
                 } else if(p.getPaymentMethod().equals("mensalmente")|| p.getPaymentMethod().equals("mensal")){
-                    this.total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getWorkedhours()%8) * p.getSalary()*1.5f
+                    this.total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getExtraHours()) * p.getSalary()*1.5f
                             - p.getUnionFee() - p.getTaxaServicoSindicato();
                     ((Hourly) p).FillWorkedhours();
                     p.setPaymentDay(p.getPaymentDay().plusMonths(1));
                     setDiaDePagamento(p.getPaymentDay().plusMonths(1));
                 }
-                    /*total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getWorkedhours()%8) * p.getSalary()*1.5f;
-                    ((Hourly) p).FillWorkedhours();
-                    p.setPaymentDay(p.getPaymentDay().plusDays(7));
-                    setDiaDePagamento(p.getPaymentDay().plusDays(7));*/
                     return (p.getName()+":("+p.getEmployeeID()+")->"+this.total+" "+ p.getPaymentTransfer())+"\n";
                 }
                 
