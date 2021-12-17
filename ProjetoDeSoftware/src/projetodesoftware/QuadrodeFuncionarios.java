@@ -166,6 +166,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
     
     @Override
     public void add(Funcionario p) {
+        
         f.add(p);
     }
 

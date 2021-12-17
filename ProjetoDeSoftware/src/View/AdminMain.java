@@ -296,7 +296,7 @@ public class AdminMain extends javax.swing.JFrame {
         jPanel1.add(btnData, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 20));
 
         jLabel10.setText("Dia Atual:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 50, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 70, 20));
 
         jTabbedPane1.addTab("Adiministração", jPanel1);
 

@@ -573,6 +573,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void bntAddCommissionedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAddCommissionedActionPerformed
         // TODO add your handling code here:
+        if(qfmain.getIndex(txtIDCommissioned.getText()) == -1){
         Commissioned p = new Commissioned(Float.parseFloat(txtCommission.getText()),txtNameCommissioned.getText(),
                                   txtIDCommissioned.getText(),
                                   txtAddressCommissioned.getText(),rbtnSyndCommissioned.isSelected(),
@@ -594,10 +595,15 @@ public class AddEmployee extends javax.swing.JFrame {
         String[] s = new String[]{txtNameCommissioned.getText(),txtAddressCommissioned.getText(),txtIDCommissioned.getText(),"Commissioned"};
         tablemain.addRow(s);
         this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
+        }
     }//GEN-LAST:event_bntAddCommissionedActionPerformed
 
     private void bntAddSalariedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAddSalariedActionPerformed
         //public Salaried(String name, String employeeID, String address, boolean Syndicate, String paymentMethod, float salary)
+        
+        if(qfmain.getIndex(txtIDSalaried.getText()) == -1){
         Salaried p = new Salaried(txtNameSalaried.getText(),txtIDSalaried.getText(),
                                   txtAddressSalaried.getText(),rbtnSyndSalaried.isSelected(),
                                   txtMethodSalaried.getText(),Float.parseFloat(txtSalarySalaried.getText()));
@@ -619,10 +625,13 @@ public class AddEmployee extends javax.swing.JFrame {
         String[] s = new String[]{txtNameSalaried.getText(),txtAddressSalaried.getText(),txtIDSalaried.getText(),"salaried"};
         tablemain.addRow(s);
         this.dispose();
-        
+        }else {
+            JOptionPane.showMessageDialog(null,"Ja existe um funcionario com esse Cpf");
+        }
     }//GEN-LAST:event_bntAddSalariedActionPerformed
 
     private void bntAddHourlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAddHourlyActionPerformed
+        if(qfmain.getIndex(txtIDHourly.getText()) == -1){
         Hourly p = new Hourly(txtNameHourly.getText(),txtIDHourly.getText(),
                             txtAddressHourly.getText(),rbtnSyndHourly.isSelected(),
                             txtMethodHourly.getText(),Float.parseFloat(txtSalaryHourly.getText()));
@@ -643,6 +652,9 @@ public class AddEmployee extends javax.swing.JFrame {
         String[] s = new String[]{txtNameHourly.getText(),txtAddressHourly.getText(),txtIDHourly.getText(),"Hourly"};
         tablemain.addRow(s);
         this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,"Ja existe um funcionario com esse Cpf");
+        }
     }//GEN-LAST:event_bntAddHourlyActionPerformed
 
     private void txtMethodHourlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMethodHourlyActionPerformed
