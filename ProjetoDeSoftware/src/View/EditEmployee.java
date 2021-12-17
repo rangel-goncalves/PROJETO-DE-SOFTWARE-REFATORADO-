@@ -89,6 +89,11 @@ public class EditEmployee extends javax.swing.JFrame {
 
         txtSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSearch.setText("CPF do Funcionario");
+        txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSearchMouseClicked(evt);
+            }
+        });
 
         btnSearch.setText("Pesquisar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -385,11 +390,11 @@ public class EditEmployee extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
         int i = qfmain.getIndex(txtSearch.getText());
-        if(qfmain.f.get(i) instanceof Commissioned commissioned){
-            
-            txtCommission.setText(String.valueOf(commissioned.getCommission()));
-        }
+        
         if(i!=-1){
+            if(qfmain.f.get(i) instanceof Commissioned commissioned){
+                txtCommission.setText(String.valueOf(commissioned.getCommission()));
+            }   
             txtName.setText(qfmain.f.get(i).getName());
             txtAddress.setText(qfmain.f.get(i).getAddress());
             txtSalary.setText(String.valueOf(qfmain.f.get(i).getSalary()));
@@ -514,6 +519,10 @@ public class EditEmployee extends javax.swing.JFrame {
                 timeMethodWeekDay=txtDiaSemana.getText();
             }*/
             if(rbtnSynd.isSelected()){
+                if(qfmain.f.get(i).isSyndicate()){
+                    p.setHistoricoSynd(qfmain.f.get(i).getHistoricoSynd());
+                    p.setTaxaServicoSindicato(qfmain.f.get(i).getTaxaServicoSindicato());
+                }
                 p.setSyndicate(true);
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
@@ -550,6 +559,10 @@ public class EditEmployee extends javax.swing.JFrame {
                 timeMethodWeekDay=txtDiaSemana.getText();
             }*/
             if(rbtnSynd.isSelected()){
+                if(qfmain.f.get(i).isSyndicate()){
+                    p.setHistoricoSynd(qfmain.f.get(i).getHistoricoSynd());
+                    p.setTaxaServicoSindicato(qfmain.f.get(i).getTaxaServicoSindicato());
+                }
                 p.setSyndicate(true);
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
@@ -564,19 +577,20 @@ public class EditEmployee extends javax.swing.JFrame {
             }
             
             
-            if (qfmain.f.get(i) instanceof Commissioned && txtCommission.getText().equals(""))
+            if (qfmain.f.get(i) instanceof Commissioned)
             {
                 float sales = ((Commissioned)qfmain.f.get(i)).getSales();
                 String historico = ((Commissioned)qfmain.f.get(i)).getSalesHistory();
-                ((Commissioned)p).setCommission(((Commissioned)qfmain.f.get(i)).getCommission());
+                if(txtCommission.getText().equals("")){
+                    ((Commissioned)p).setCommission(((Commissioned)qfmain.f.get(i)).getCommission());
+                }else{
+                    ((Commissioned)p).setCommission(Float.parseFloat(txtCommission.getText()));
+                }
                 ((Commissioned)p).setSales(sales);
-                System.out.println(sales);
                 ((Commissioned)p).setSalesHistory(historico);
-                System.out.println(historico);
             }else{
                 ((Commissioned)p).setCommission(Float.parseFloat(txtCommission.getText()));
             }
-            
             p = (Commissioned)p;
             qfmain.changeDetails(cpf, p);
             qfmain.AlterarAgandaFuncionario(cpf, Method, timeMethod, timeMethodWeekDay);
@@ -600,6 +614,10 @@ public class EditEmployee extends javax.swing.JFrame {
                 timeMethodWeekDay=txtDiaSemana.getText();
             }*/
             if(rbtnSynd.isSelected()){
+                if(qfmain.f.get(i).isSyndicate()){
+                    p.setHistoricoSynd(qfmain.f.get(i).getHistoricoSynd());
+                    p.setTaxaServicoSindicato(qfmain.f.get(i).getTaxaServicoSindicato());
+                }
                 p.setSyndicate(true);
                 p.setUnionFee(Float.parseFloat(txtUnionFee.getText()));
                 p.setSyndicateId(txtIdSind.getText());
@@ -697,6 +715,11 @@ public class EditEmployee extends javax.swing.JFrame {
         rbtnChequeCorreio.setSelected(false);
         rbtnChequeMaos.setSelected(false);
     }//GEN-LAST:event_rbtnDepositoBancarioActionPerformed
+
+    private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
+        // TODO add your handling code here:
+        txtSearch.selectAll();
+    }//GEN-LAST:event_txtSearchMouseClicked
 
     /**
      * @param args the command line arguments

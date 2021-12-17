@@ -91,6 +91,18 @@ public class AdminMain extends javax.swing.JFrame {
         txtVendasInd = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel13 = new javax.swing.JPanel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel14 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtFolhapagamento = new javax.swing.JTextArea();
+        jPanel15 = new javax.swing.JPanel();
+        txtNovaAgenda = new javax.swing.JTextField();
+        btnAddAgenda = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtAgendas = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
@@ -111,18 +123,6 @@ public class AdminMain extends javax.swing.JFrame {
         btnBuscarInd = new javax.swing.JButton();
         jScrollPane16 = new javax.swing.JScrollPane();
         txtInd = new javax.swing.JTextPane();
-        jPanel13 = new javax.swing.JPanel();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
-        jPanel14 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtFolhapagamento = new javax.swing.JTextArea();
-        jPanel15 = new javax.swing.JPanel();
-        txtNovaAgenda = new javax.swing.JTextField();
-        btnAddAgenda = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtAgendas = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -216,6 +216,11 @@ public class AdminMain extends javax.swing.JFrame {
 
         jPanel1.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 180));
 
+        txtCpf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCpfMouseClicked(evt);
+            }
+        });
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
@@ -229,6 +234,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        atxtSearch.setEditable(false);
         jScrollPane5.setViewportView(atxtSearch);
 
         jButton1.setText("X");
@@ -411,6 +417,7 @@ public class AdminMain extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtVendasInd.setEditable(false);
         txtVendasInd.setColumns(20);
         txtVendasInd.setRows(5);
         jScrollPane2.setViewportView(txtVendasInd);
@@ -460,13 +467,119 @@ public class AdminMain extends javax.swing.JFrame {
             .addComponent(jTabbedPane2)
         );
 
-        jTabbedPane1.addTab("Relatorio de vendas", jPanel3);
+        jTabbedPane1.addTab("Registro de vendas", jPanel3);
 
         jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane3MouseClicked(evt);
             }
         });
+
+        jTabbedPane5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane5MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Rodar folha de pagamento para hoje");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Atualizar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        txtFolhapagamento.setEditable(false);
+        txtFolhapagamento.setColumns(20);
+        txtFolhapagamento.setRows(5);
+        jScrollPane3.setViewportView(txtFolhapagamento);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(173, 173, 173))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane5.addTab("Rodar folha de pagamento", jPanel14);
+
+        btnAddAgenda.setText("Adicionar");
+        btnAddAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAgendaActionPerformed(evt);
+            }
+        });
+
+        txtAgendas.setEditable(false);
+        txtAgendas.setColumns(20);
+        txtAgendas.setRows(5);
+        jScrollPane4.setViewportView(txtAgendas);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNovaAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddAgenda))
+                .addGap(110, 110, 110)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(204, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(txtNovaAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddAgenda)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Criar folha de pagamento", jPanel15);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane5)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane5)
+        );
+
+        jTabbedPane3.addTab("Administrativo", jPanel13);
 
         jTabbedPane4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -591,6 +704,11 @@ public class AdminMain extends javax.swing.JFrame {
 
         txtIdIndi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIdIndi.setText("ID");
+        txtIdIndi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIdIndiMouseClicked(evt);
+            }
+        });
 
         btnBuscarInd.setText("Pesquisar");
         btnBuscarInd.addActionListener(new java.awt.event.ActionListener() {
@@ -629,112 +747,6 @@ public class AdminMain extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Individual", jPanel22);
 
-        jTabbedPane5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane5MouseClicked(evt);
-            }
-        });
-
-        jButton2.setText("Rodar folha de pagamento para hoje");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Atualizar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        txtFolhapagamento.setEditable(false);
-        txtFolhapagamento.setColumns(20);
-        txtFolhapagamento.setRows(5);
-        jScrollPane3.setViewportView(txtFolhapagamento);
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(173, 173, 173))
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane5.addTab("Rodar folha de pagamento", jPanel14);
-
-        btnAddAgenda.setText("Adicionar");
-        btnAddAgenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddAgendaActionPerformed(evt);
-            }
-        });
-
-        txtAgendas.setEditable(false);
-        txtAgendas.setColumns(20);
-        txtAgendas.setRows(5);
-        jScrollPane4.setViewportView(txtAgendas);
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNovaAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddAgenda))
-                .addGap(110, 110, 110)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(txtNovaAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAddAgenda)))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
-        jTabbedPane5.addTab("Criar folha de pagamento", jPanel15);
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5)
-        );
-
-        jTabbedPane3.addTab("Administrativo", jPanel13);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -758,12 +770,28 @@ public class AdminMain extends javax.swing.JFrame {
 
         jLabel5.setText("Saida:");
 
+        txtCpfPonto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCpfPontoMouseClicked(evt);
+            }
+        });
         txtCpfPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfPontoActionPerformed(evt);
             }
         });
 
+        txtSaindaPonto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSaindaPontoMouseClicked(evt);
+            }
+        });
+
+        txtChegadaPonto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtChegadaPontoMouseClicked(evt);
+            }
+        });
         txtChegadaPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtChegadaPontoActionPerformed(evt);
@@ -779,6 +807,7 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        txtResumoPonto.setEditable(false);
         txtResumoPonto.setColumns(20);
         txtResumoPonto.setRows(5);
         jScrollPane6.setViewportView(txtResumoPonto);
@@ -848,8 +877,15 @@ public class AdminMain extends javax.swing.JFrame {
             }
         });
 
+        txtCpfSind.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCpfSindMouseClicked(evt);
+            }
+        });
+
         jLabel7.setText("CPF:");
 
+        txtSindDetails.setEditable(false);
         txtSindDetails.setColumns(20);
         txtSindDetails.setRows(5);
         jScrollPane8.setViewportView(txtSindDetails);
@@ -858,6 +894,12 @@ public class AdminMain extends javax.swing.JFrame {
         btnTaxaSind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaxaSindActionPerformed(evt);
+            }
+        });
+
+        txtTaxaSind.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTaxaSindMouseClicked(evt);
             }
         });
 
@@ -951,10 +993,13 @@ public class AdminMain extends javax.swing.JFrame {
     private void btnPesquisarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarVendasActionPerformed
         // TODO add your handling code here:
         int i  = qf.getIndex(txtCpfVendas.getText());
-        if(i!= -1){
+        if(i!= -1 && (qf.f.get(i) instanceof Commissioned)){
             pnlRegistarVenda.setVisible(true);
             txtVendasInd.setText(qf.f.get(i).getName()+"\n"+((Commissioned)qf.f.get(i)).getSalesHistory()+"\nTotal a receber: "+
                                     ((Commissioned)qf.f.get(i)).getSales()*((Commissioned)qf.f.get(i)).getCommission());
+            txtValorVenda.setText("");
+        } else{
+            txtVendasInd.setText("Funcionario Comissionado não encontrado.");
         }
     }//GEN-LAST:event_btnPesquisarVendasActionPerformed
 
@@ -1148,9 +1193,45 @@ public class AdminMain extends javax.swing.JFrame {
             txtSindDetails.setText(qf.f.get(i).getSyndicateId()+"\nTaxaSindical:" + qf.f.get(i).getUnionFee() + "\n" 
                                    + "Historico de taxas de serviços:\n" + qf.f.get(i).getHistoricoSindicato()+
                                    "\n"+"Total: "+ qf.f.get(i).getTaxaServicoSindicato());
+            txtTaxaSind.setText("");
             pnlSind.setVisible(true);
         }  
     }//GEN-LAST:event_btnPesquisarSindActionPerformed
+
+    private void txtCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCpfMouseClicked
+        // TODO add your handling code here:
+        txtCpf.selectAll();
+    }//GEN-LAST:event_txtCpfMouseClicked
+
+    private void txtIdIndiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdIndiMouseClicked
+        // TODO add your handling code here:
+        txtIdIndi.selectAll();
+    }//GEN-LAST:event_txtIdIndiMouseClicked
+
+    private void txtCpfPontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCpfPontoMouseClicked
+        // TODO add your handling code here:
+        txtCpfPonto.selectAll();
+    }//GEN-LAST:event_txtCpfPontoMouseClicked
+
+    private void txtChegadaPontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtChegadaPontoMouseClicked
+        // TODO add your handling code here:
+        txtChegadaPonto.selectAll();
+    }//GEN-LAST:event_txtChegadaPontoMouseClicked
+
+    private void txtSaindaPontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSaindaPontoMouseClicked
+        // TODO add your handling code here:
+        txtSaindaPonto.selectAll();
+    }//GEN-LAST:event_txtSaindaPontoMouseClicked
+
+    private void txtCpfSindMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCpfSindMouseClicked
+        // TODO add your handling code here:
+        txtCpfSind.selectAll();
+    }//GEN-LAST:event_txtCpfSindMouseClicked
+
+    private void txtTaxaSindMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaxaSindMouseClicked
+        // TODO add your handling code here:
+        txtTaxaSind.selectAll();
+    }//GEN-LAST:event_txtTaxaSindMouseClicked
 
     /**
      * @param args the command line arguments

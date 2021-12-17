@@ -34,6 +34,14 @@ public class Sindicato {
     public float TotalFeeServices(){
         return this.feeServices;
     }
+    
+    public void setTotalFeeServices(float total){
+        this.feeServices = total;
+    }
+    
+    public void setHistorico(String h){
+        this.historico += h+ "\n";
+    }
 
     public String getHistorico(){
         return this.historico;

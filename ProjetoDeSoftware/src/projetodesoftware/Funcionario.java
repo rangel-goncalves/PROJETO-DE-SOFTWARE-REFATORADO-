@@ -123,6 +123,7 @@ public class Funcionario implements  Cloneable  {
         this.Syndicate.setSyndicate(Syndicate);
     }
     
+    
     public void setUnionFee(float value){
         this.Syndicate.setUnionFee(value);
     }
@@ -138,6 +139,14 @@ public class Funcionario implements  Cloneable  {
     public float getTaxaServicoSindicato(){
         return this.Syndicate.TotalFeeServices();
     }
+    /**
+     *usar para uma mudança no valor total de taxas de serviços do sindicato.
+     *Para adicionar novas taxas é recomendado usar newTaxaServicoSindicato(float value, LocalDate l ).
+     */
+    public void setTaxaServicoSindicato(float v){
+        
+        this.Syndicate.setTotalFeeServices(v);
+    }
     
     public String getHistoricoSindicato(){
         return this.Syndicate.getHistorico();
@@ -152,6 +161,14 @@ public class Funcionario implements  Cloneable  {
     
     public String getSyndicateId(){
         return this.Syndicate.getSyndicateId();
+    }
+    
+    public void setHistoricoSynd(String h){
+         this.Syndicate.setHistorico(h);
+    }
+    
+    public String getHistoricoSynd(){
+        return this.Syndicate.getHistorico();
     }
     
     public String getPaymentMethod() {
@@ -240,10 +257,10 @@ public class Funcionario implements  Cloneable  {
     
     @Override
     public String toString() {
-        return "Funcionario{" + "name: " + name + ", employeeID: " 
-                + employeeID + ", address: " + address + ", type: " + type + ", Syndicate: " +
-                Syndicate.isSyndicate()+ ", salary: " + salary + ", paymentMethod: " + getPaymentMethod() + " " 
-                +getTimePaymentMethod()+" "+ getTimeMethodWeekDay()+" " + getPaymentTransfer() +" "+ getPaymentDay()+ "}\n";
+        return "Funcionario {" + "Name: " + name + ", employeeID: " 
+                + employeeID + "\naddress: " + address + ", type: " + type + ", Syndicate: " +
+                Syndicate.isSyndicate()+ "\nsalary: " + salary + ", paymentMethod: " + getPaymentMethod() + " " 
+                +getTimePaymentMethod()+" "+ getTimeMethodWeekDay()+" \n" + getPaymentTransfer() +"\n"+ getPaymentDay()+ "}\n";
     }
   
 }
