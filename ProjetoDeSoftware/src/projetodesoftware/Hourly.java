@@ -75,6 +75,9 @@ public class Hourly extends Funcionario{
     public void setWorkedhours(int chegada,int saida, int dia ) {
         this.workedhours[dia-1].setChegada(chegada);
         this.workedhours[dia-1].setSaida(saida);
+        if((saida - chegada)>8){
+            this.workedhours[dia-1].setExtra((saida - chegada)- 8);
+        }
  
     }
     
@@ -87,6 +90,7 @@ public class Hourly extends Funcionario{
         for(int i = 0; i <31; i++){
             this.workedhours[i].setChegada(0);
             this.workedhours[i].setSaida(0);
+            this.workedhours[i].setExtra(0);
         }
         
     }
@@ -99,7 +103,8 @@ public class Hourly extends Funcionario{
     
     @Override
     public String toString() {
-        return super.toString() + "Hourly{" + "workedhours: " + getWorkedhours() + '}';
+        return super.toString() + "\nHourly{" + "workedhours: " + this.getWorkedhours() +" +Horas extras:" +this.getExtraHours()
+                +  '}';
     }
 
    

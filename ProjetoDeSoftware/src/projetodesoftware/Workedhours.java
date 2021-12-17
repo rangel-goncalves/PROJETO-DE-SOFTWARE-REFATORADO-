@@ -39,9 +39,9 @@ public class Workedhours {
     }
  
     public int Total(){
-        if((this.saida - this.chegada)>8){
+        /*if((this.saida - this.chegada)>8){
             this.extra = (this.saida - this.chegada) - 8;
-        }
+        }*/
         return this.saida - this.chegada - this.extra;
     }
 }

@@ -1006,7 +1006,7 @@ public class AdminMain extends javax.swing.JFrame {
         txtVendasGeral.setText(txtVendasGeral.getText()+ "\n"+qf.f.get(i).getName()+"| Cpf: "+qf.f.get(i).getEmployeeID()
                                +"| Valor:"+txtValorVenda.getText()+"| Horario: "+l1.truncatedTo(ChronoUnit.SECONDS).format(dtf));
         txtVendasInd.setText(qf.f.get(i).getName()+"\n"+((Commissioned)qf.f.get(i)).getSalesHistory()+"\nTotal a receber: "+
-                                    ((Commissioned)qf.f.get(i)).getSales()*((Commissioned)qf.f.get(i)).getCommission());
+                                    ((Commissioned)qf.f.get(i)).getSales());
     }//GEN-LAST:event_btnRegistarVendaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1080,7 +1080,7 @@ public class AdminMain extends javax.swing.JFrame {
                     int chegada = Integer.parseInt(txtChegadaPonto.getText());
                     int saida = Integer.parseInt(txtSaindaPonto.getText());
                     ((Hourly)qf.f.get(i)).setWorkedhours(chegada, saida, qf.getDiaAtual().getDayOfMonth());
-                
+                    
                     txtResumoPonto.setText("horas trabalhados hoje: " + (saida - chegada)+ "\n"+"Total de horas trabalhadas desse funcionario: "+
                                            (((Hourly)qf.f.get(i)).getWorkedhours()+((Hourly)qf.f.get(i)).getExtraHours()));
                 }

@@ -564,7 +564,7 @@ public class EditEmployee extends javax.swing.JFrame {
             }
             
             
-            if (qfmain.f.get(i) instanceof Commissioned || txtCommission.getText().equals(""))
+            if (qfmain.f.get(i) instanceof Commissioned && txtCommission.getText().equals(""))
             {
                 float sales = ((Commissioned)qfmain.f.get(i)).getSales();
                 String historico = ((Commissioned)qfmain.f.get(i)).getSalesHistory();
