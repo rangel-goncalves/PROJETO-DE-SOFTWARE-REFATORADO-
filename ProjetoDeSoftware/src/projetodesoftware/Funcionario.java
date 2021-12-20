@@ -26,14 +26,12 @@ public class Funcionario implements  Cloneable  {
     private float payment;
   
     public Funcionario() {
-        setDefault();
     }
     
     public Funcionario(String name, String employeeID, String type) {
         this.name = name;
         this.employeeID = employeeID;
         this.type = type;
-        setDefault();
     }
 
     public Funcionario(String name, String employeeID, String type, float salary) {
@@ -41,7 +39,6 @@ public class Funcionario implements  Cloneable  {
         this.employeeID = employeeID;
         this.type = type;
         this.salary = salary;
-        setDefault();
     }
 
     public Funcionario(String name, String employeeID, String address, String type) {
@@ -49,7 +46,6 @@ public class Funcionario implements  Cloneable  {
         this.address = address;
         this.employeeID = employeeID;
         this.type = type;
-        setDefault();
     }
     
     public Funcionario(String name, String employeeID, String address, String type, float salary) {
@@ -58,7 +54,6 @@ public class Funcionario implements  Cloneable  {
         this.employeeID = employeeID;
         this.type = type;
         this.salary = salary;
-        setDefault();
     }
     
     public Funcionario(String name, String employeeID, String address, String type, String paymentMethod) {
@@ -67,7 +62,6 @@ public class Funcionario implements  Cloneable  {
         this.employeeID = employeeID;
         this.type = type;
         this.paymentMethod.method = paymentMethod;
-        setDefault();
     }
     
     public Funcionario(String name, String employeeID, String address, String type, String paymentMethod, float salary) {
@@ -77,7 +71,6 @@ public class Funcionario implements  Cloneable  {
         this.type = type;
         this.paymentMethod.method = paymentMethod;
         this.salary = salary;
-        setDefault();
     }
 
     public Funcionario(String name, String employeeID, String address, String type, boolean Syndicate, String paymentMethod, float salary) {
@@ -88,7 +81,6 @@ public class Funcionario implements  Cloneable  {
         this.Syndicate.setSyndicate(Syndicate);
         this.paymentMethod.method = paymentMethod;
         this.salary = salary;
-        setDefault();
     }
 
     public LocalDate getPaymentDay() {
@@ -244,7 +236,23 @@ public class Funcionario implements  Cloneable  {
             LocalDate l = LocalDate.now();
             LocalDate j = l;
             if(this instanceof Salaried){
-                //j = j.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusMonths(1);
+                j = j.with(TemporalAdjusters.lastDayOfMonth());
+            } else if (this instanceof Commissioned){
+                j = j.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusWeeks(1);
+            }else{
+               j = j.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)); 
+            }
+            this.paymentDay = j; 
+        }
+    }
+    
+    public void setDefault( LocalDate cur){
+        if(paymentTransfer == null){
+            this.setPaymentTransfer("Deposito Bancario");
+        }
+        if(paymentDay == null){
+            LocalDate j = cur;
+            if(this instanceof Salaried){
                 j = j.with(TemporalAdjusters.lastDayOfMonth());
             } else if (this instanceof Commissioned){
                 j = j.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusWeeks(1);
@@ -258,8 +266,8 @@ public class Funcionario implements  Cloneable  {
     @Override
     public String toString() {
         return "Funcionario {" + "Name: " + name + ", employeeID: " 
-                + employeeID + "\naddress: " + address + ", type: " + type + ", Syndicate: " +
-                Syndicate.isSyndicate()+ "\nsalary: " + salary + ", paymentMethod: " + getPaymentMethod() + " " 
+                + employeeID + "\nAddress: " + address + ", Type: " + type + ",\nSyndicate: " +
+                Syndicate.isSyndicate()+ "\nSalary: " + salary + ",\nPaymentMethod: " + getPaymentMethod() + " " 
                 +getTimePaymentMethod()+" "+ getTimeMethodWeekDay()+" \n" + getPaymentTransfer() +"\n"+ getPaymentDay()+ "}\n";
     }
   

@@ -68,7 +68,6 @@ public class AgendaPagamento implements  Cloneable{
                     setDiaDePagamento(p.getPaymentDay().plusDays(14));
                     ////arrumar taxa de serivços sindicato
                     if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
-                        System.out.println("discontei "+p.getTaxaServicoSindicato() );
                         this.total -= p.getTaxaServicoSindicato();
                         p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
                     }

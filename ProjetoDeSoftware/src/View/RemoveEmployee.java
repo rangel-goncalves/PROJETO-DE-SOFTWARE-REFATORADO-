@@ -155,7 +155,6 @@ public class RemoveEmployee extends javax.swing.JFrame {
         String cpf =txtCpf.getText();
         int i = qfmain.remover(cpf);
         tablemain.removeRow(i);
-        System.out.println(i);
         qfmain.remover(cpf);
 
         this.dispose();

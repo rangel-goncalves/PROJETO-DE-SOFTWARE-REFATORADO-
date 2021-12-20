@@ -590,6 +590,7 @@ public class AddEmployee extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
         }
+        p.setDefault(qfmain.getDiaAtual());
         qfmain.add(p);
         
         String[] s = new String[]{txtNameCommissioned.getText(),txtAddressCommissioned.getText(),txtIDCommissioned.getText(),"Commissioned"};
@@ -619,7 +620,7 @@ public class AddEmployee extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
         }
-        
+        p.setDefault(qfmain.getDiaAtual());
         qfmain.add(p);
         
         String[] s = new String[]{txtNameSalaried.getText(),txtAddressSalaried.getText(),txtIDSalaried.getText(),"salaried"};
@@ -647,6 +648,7 @@ public class AddEmployee extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Pagamento foi definido via: Deposito Bancario");
         }
+        p.setDefault(qfmain.getDiaAtual());
         qfmain.add(p);
 
         String[] s = new String[]{txtNameHourly.getText(),txtAddressHourly.getText(),txtIDHourly.getText(),"Hourly"};

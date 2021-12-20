@@ -103,8 +103,8 @@ public class Hourly extends Funcionario{
     
     @Override
     public String toString() {
-        return super.toString() + "\nHourly{" + "workedhours: " + this.getWorkedhours() +" +Horas extras:" +this.getExtraHours()
-                +  '}';
+        return super.toString() + "\nAdicional da categoria Horista:\n" + "workedhours: " + this.getWorkedhours() +" +Horas extras:" +this.getExtraHours()
+                +  '.';
     }
 
    

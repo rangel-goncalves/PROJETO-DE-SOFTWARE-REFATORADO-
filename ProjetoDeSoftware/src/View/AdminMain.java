@@ -1075,6 +1075,7 @@ public class AdminMain extends javax.swing.JFrame {
     private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
         // TODO add your handling code here:
         qf.setDiaAtual(LocalDate.parse(txtData.getText()));
+        System.out.println(qf.getDiaAtual());
         txtData.setText(qf.getDiaAtual().toString());
     }//GEN-LAST:event_btnDataActionPerformed
 

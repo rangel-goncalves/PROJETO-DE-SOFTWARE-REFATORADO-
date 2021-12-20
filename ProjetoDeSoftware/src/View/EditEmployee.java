@@ -497,8 +497,11 @@ public class EditEmployee extends javax.swing.JFrame {
         }else{
             timeMethodWeekDay = "";
         }
+        /*if(Method.equals("semanal") && timeMethodWeekDay.equals("sexta") && timeMethod.equals("2")){
+            confereAgenda = "bi- semanalmente";
+        }*/
+        System.out.println(confereAgenda);
         if(!qfmain.ap.existAgenda(confereAgenda)){
-            System.out.println(confereAgenda);
             JOptionPane.showMessageDialog(null,"Agenda de pagamento não é valida");
         }else{
         if(rbtnSalaried.isSelected()){

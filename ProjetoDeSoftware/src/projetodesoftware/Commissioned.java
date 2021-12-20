@@ -108,7 +108,7 @@ public class Commissioned extends Funcionario {
 
     @Override
     public String toString() {
-        return super.toString() + "Commissioned{" + "commission: " + commission + ", sales: " + sales + '}';
+        return super.toString() + "Adicional da categoria Comissionado:\n" + "Commission: " + commission + ", Sales: " + sales + '.';
     }
 
 }
