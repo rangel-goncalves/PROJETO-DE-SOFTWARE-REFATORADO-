@@ -163,6 +163,14 @@ public class Funcionario implements  Cloneable  {
         return this.Syndicate.getHistorico();
     }
     
+    public boolean getIsTaxaLancada(){
+        return this.Syndicate.isTaxaLancada();
+    }
+    
+    public void setIsTaxaLancada(boolean b){
+        this.Syndicate.setTaxaLancada(b);
+    }
+    
     public String getPaymentMethod() {
         return this.paymentMethod.method;
     }

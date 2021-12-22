@@ -18,6 +18,7 @@ public class Sindicato {
     private float feeServices=0;
     private float unionFee=0;
     private String historico = "";
+    private boolean taxaLancada = false;
     public void NewFeeServices(float value, LocalDate l){
         //this.feeServices += value;
         if(this.Syndicate == true){
@@ -72,6 +73,17 @@ public class Sindicato {
 
     public void setSyndicate(boolean Syndicate) {
         this.Syndicate = Syndicate;
+        if(this.Syndicate == false){
+            this.unionFee = 0;
+        }
+    }
+
+    public boolean isTaxaLancada() {
+        return taxaLancada;
+    }
+
+    public void setTaxaLancada(boolean taxaLancada) {
+        this.taxaLancada = taxaLancada;
     }
     
     

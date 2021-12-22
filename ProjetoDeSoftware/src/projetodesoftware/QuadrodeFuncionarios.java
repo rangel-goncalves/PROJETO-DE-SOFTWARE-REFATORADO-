@@ -78,8 +78,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
         if(Method.equals("mensal") ||  Method.equals("mensalmente")){
             LocalDate l2 = this.getDiaAtual().with(TemporalAdjusters.lastDayOfMonth());
             if(timeMethod.equals("$") || timeMethod.equals("") || timeMethod== null){
-                //LocalDate l2 = f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth());
-                
+                //LocalDate l1 = f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth());
                 //DayOfWeek d = f.get(i).getPaymentDay().withDayOfMonth(l2.getDayOfMonth()).getDayOfWeek();
                 DayOfWeek d = this.getDiaAtual().withDayOfMonth(l2.getDayOfMonth()).getDayOfWeek();
                 if(d == DayOfWeek.SUNDAY){ /////somente o ultimo dia util(no maximo sabado)
@@ -90,14 +89,18 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     f.get(i).setPaymentDay(l2.with(TemporalAdjusters.lastDayOfMonth()));
                 } 
             }else { // timeMethod sera o dia do pagamento
-                f.get(i).setPaymentDay(l2.withDayOfMonth(Integer.parseInt(timeMethod)));
+                if(l2.withDayOfMonth(Integer.parseInt(timeMethod)).isBefore(this.getDiaAtual())){
+                    f.get(i).setPaymentDay(l2.withDayOfMonth(Integer.parseInt(timeMethod)).plusMonths(1));
+                }else{
+                    f.get(i).setPaymentDay(l2.withDayOfMonth(Integer.parseInt(timeMethod)));
+                }
             }
         } else if(Method.equals("semanal") || Method.equals("semanalmente")){     
             if(timeMethodWeekDay.equals("") || timeMethodWeekDay == null){  //// pago por semana nas sextas
                 if(timeMethod.equals("2")){
                     f.get(i).setPaymentMethod("bi- semanalmente", "","");
                     f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusDays(7));
-                } else if(timeMethod.equals("1")){
+                } else if(timeMethod.equals("1")|| timeMethod.equals("")){
                     f.get(i).setPaymentMethod("semanalmente", "","");
                     f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));
                 }
@@ -106,7 +109,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     if(timeMethod.equals("2")){
                         f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.MONDAY)).plusDays(7));
-                    } else if(timeMethod.equals("1")){
+                    } else if(timeMethod.equals("1") || timeMethod.equals("")){
                         f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.MONDAY)));
                     }
@@ -122,7 +125,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     if(timeMethod.equals("2")){
                         f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)).plusDays(7));
-                    } else if(timeMethod.equals("1")){
+                    } else if(timeMethod.equals("1") || timeMethod.equals("")){
                         f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)));
                     } 
@@ -130,7 +133,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     if(timeMethod.equals("2")){
                         f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.THURSDAY)).plusDays(7));
-                    } else if(timeMethod.equals("1")){
+                    } else if(timeMethod.equals("1") || timeMethod.equals("")){
                         f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.THURSDAY)));
                     } 
@@ -138,7 +141,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     if(timeMethod.equals("2")){
                         f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).plusDays(7));
-                    } else if(timeMethod.equals("1")){
+                    } else if(timeMethod.equals("1") || timeMethod.equals("")){
                         f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));
                     } 
@@ -146,7 +149,7 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
                     if(timeMethod.equals("2")){
                         f.get(i).setPaymentMethod("bi- semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)).plusDays(7));
-                    } else if(timeMethod.equals("1")){
+                    } else if(timeMethod.equals("1") || timeMethod.equals("")){
                         f.get(i).setPaymentMethod("semanalmente", "",timeMethodWeekDay);
                         f.get(i).setPaymentDay(diaAtual.with(TemporalAdjusters.next(DayOfWeek.SATURDAY)));
                     } 
