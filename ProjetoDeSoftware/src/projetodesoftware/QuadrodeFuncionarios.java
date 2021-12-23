@@ -21,12 +21,6 @@ public class QuadrodeFuncionarios implements Quadrofuncionario, Cloneable {
     public AgendaPagamento ap = new AgendaPagamento();
     public LocalDate diaAtual = LocalDate.now();
     Scanner input =  new Scanner(System.in);
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return (super.clone()); //To change body of generated methods, choose Tools | Templates.
-    }
-  
     
     public String rodarAgenda(int grupo){
         String s ="";
