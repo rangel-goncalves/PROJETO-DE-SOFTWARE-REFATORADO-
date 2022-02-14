@@ -9,7 +9,8 @@ import View.AdminMain;
 /**
  *
  * @author Rangel
- * PROJETO REFATORADO
+ * PROJETO REFATORADO 
+ * Padrões:  Command e  Move Accumulation to Collecting Parameter
  */
 public class ProjetoDeSoftware {
 
