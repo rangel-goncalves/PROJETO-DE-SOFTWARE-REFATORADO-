@@ -9,6 +9,7 @@ import View.AdminMain;
 /**
  *
  * @author Rangel
+ * PROJETO REFATORADO
  */
 public class ProjetoDeSoftware {
 
