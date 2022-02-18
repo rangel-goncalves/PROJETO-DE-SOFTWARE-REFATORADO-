@@ -86,8 +86,7 @@ public class AgendaHorista implements Command{
         return (p.getName()+":("+p.getEmployeeID()+")->"+this.total+" "+ p.getPaymentTransfer()+"\n"+taxasSind_Vendas)+"\n";
     }
     
-    @Override
-    public String execute(Funcionario p, LocalDate cur) {
+    public String gerarContraCheque(Funcionario p, LocalDate cur){
         if(p instanceof Hourly){
                 String taxasSind_Vendas="";
                 if(cur.equals(p.getPaymentDay())){
@@ -104,83 +103,11 @@ public class AgendaHorista implements Command{
         return "";
     }
     
-    /*@Override
+    @Override
     public String execute(Funcionario p, LocalDate cur) {
-        if(p instanceof Hourly){
-                String taxasSind_Vendas="";
-                if(cur.equals(p.getPaymentDay()))
-                {
-                    if(p.getPaymentMethod().equals("bi- semanalmente")){
-                    this.total =  (((Hourly) p).getWorkedhours() * p.getSalary()) + ((((Hourly) p).getExtraHours()) * p.getSalary()*1.5f)
-                            - (p.getUnionFee()/2);
-                    ((Hourly) p).FillWorkedhours();
-                    p.setPaymentDay(p.getPaymentDay().plusDays(14));
-                    setDiaDePagamento(p.getPaymentDay().plusDays(14));
-                    if(p.getUnionFee()>0){
-                        taxasSind_Vendas += "-"+p.getUnionFee()/2+" Taxa Sindical\n";
-                    }
-                    if(p.getIsTaxaLancada()){
-                        this.total -= p.getTaxaServicoSindicato();
-                        taxasSind_Vendas += "-"+p.getTaxaServicoSindicato()+" por Serviços sindicais\n";
-                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(false);
-                    }
-                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
-                        //this.total -= p.getTaxaServicoSindicato();
-                        //p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(true);
-                    }
-                    
-                } else if(p.getPaymentMethod().equals("semanalmente")){
-                    this.total =  (((Hourly) p).getWorkedhours() * p.getSalary()) + ((((Hourly) p).getExtraHours()) * (p.getSalary()*1.5f))
-                            - (p.getUnionFee()/4);
-                    ((Hourly) p).FillWorkedhours();
-                    p.setPaymentDay(p.getPaymentDay().plusDays(7));
-                    setDiaDePagamento(p.getPaymentDay().plusDays(7));
-                    if(p.getUnionFee()>0){
-                        taxasSind_Vendas += "-"+p.getUnionFee()/4+" Taxa Sindical\n";
-                    }
-                    if(p.getIsTaxaLancada()){
-                        this.total -= p.getTaxaServicoSindicato();
-                        taxasSind_Vendas += "-"+p.getTaxaServicoSindicato()+" por Serviços sindicais\n";
-                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(false);
-                    }
-                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
-                        //this.total -= p.getTaxaServicoSindicato();
-                        //p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(true);
-                    }
-                    
-                } else if(p.getPaymentMethod().equals("mensalmente")|| p.getPaymentMethod().equals("mensal")){
-                    this.total =  ((Hourly) p).getWorkedhours() * p.getSalary() + (((Hourly) p).getExtraHours()) * p.getSalary()*1.5f
-                            - p.getUnionFee();
-                    ((Hourly) p).FillWorkedhours();
-                    p.setPaymentDay(p.getPaymentDay().plusMonths(1));
-                    setDiaDePagamento(p.getPaymentDay().plusMonths(1));
-                    if(p.getUnionFee()>0){
-                        taxasSind_Vendas += "-"+p.getUnionFee()+" Taxa Sindical\n";
-                    }
-                    if(p.getIsTaxaLancada()){
-                        this.total -= p.getTaxaServicoSindicato();
-                        taxasSind_Vendas += "-"+p.getTaxaServicoSindicato()+" por Serviços sindicais\n";
-                        p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(false);
-                    }
-                    if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
-                        //this.total -= p.getTaxaServicoSindicato();
-                        //p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
-                        p.setIsTaxaLancada(true);
-                    }
-                }
-                    return (p.getName()+":("+p.getEmployeeID()+")->"+this.total+" "+ p.getPaymentTransfer()+"\n"+taxasSind_Vendas)+"\n";
-                }
-                
-                
-        }
-        return "";
-    }*/
-
+        return this.gerarContraCheque(p, cur);
+    }
+    
     public float getTotal() {
         return total;
     }

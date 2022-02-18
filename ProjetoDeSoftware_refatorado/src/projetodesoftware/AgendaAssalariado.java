@@ -74,15 +74,12 @@ public class AgendaAssalariado implements Command{
             p.setIsTaxaLancada(false);
         }
         if(p.getPaymentDay().isAfter(cur.with(TemporalAdjusters.lastDayOfMonth()))){
-            //this.total -= p.getTaxaServicoSindicato();
-            //p.newTaxaServicoSindicato(-1*p.getTaxaServicoSindicato(), cur);
             p.setIsTaxaLancada(true);
         }
         return (p.getName()+":("+p.getEmployeeID()+")->"+this.total+" "+ p.getPaymentTransfer()+"\n"+taxasSind_Vendas)+"\n";
     }
 
-    @Override
-    public String execute(Funcionario p, LocalDate cur) {
+    public String gerarContraCheque(Funcionario p, LocalDate cur){
         if(p instanceof Salaried){
             if(cur.equals(p.getPaymentDay())){
                 if(p.getPaymentMethod().equals("bi- semanalmente")){
@@ -95,6 +92,11 @@ public class AgendaAssalariado implements Command{
             }
         }
         return "";
+    }
+    
+    @Override
+    public String execute(Funcionario p, LocalDate cur) {
+        return this.gerarContraCheque(p, cur);
     }
     public float getTotal() {
         return total;
