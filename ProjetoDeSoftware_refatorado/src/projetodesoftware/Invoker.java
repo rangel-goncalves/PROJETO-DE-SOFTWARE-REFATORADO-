@@ -21,12 +21,8 @@ public class Invoker {
         comandos.put("A", new AgendaAssalariado());
         comandos.put("C", new AgendaComissionado());
         comandos.put("H", new AgendaHorista());
+        comandos.put("G", new AgendaGeral());
     }
-    
-    /*static{
-        comandos.put("A", new ACommand());
-        comandos.put("B", new BCommand());
-    }*/
     
     public String invoker(String comando,LocalDate cur, Funcionario p){
         if(comandos.get(comando)!=null)
