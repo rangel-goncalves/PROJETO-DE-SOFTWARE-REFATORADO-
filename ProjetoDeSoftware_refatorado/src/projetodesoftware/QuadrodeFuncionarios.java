@@ -52,14 +52,10 @@ public class QuadrodeFuncionarios implements Quadrofuncionario{
         if(Method.equals("mensal") ||  Method.equals("mensalmente")){
             LocalDate l2 = this.getDiaAtual().with(TemporalAdjusters.lastDayOfMonth());
             if(timeMethod.equals("$") || timeMethod.equals("") || timeMethod== null){
-                //LocalDate l1 = f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth());
-                //DayOfWeek d = f.get(i).getPaymentDay().withDayOfMonth(l2.getDayOfMonth()).getDayOfWeek();
                 DayOfWeek d = this.getDiaAtual().withDayOfMonth(l2.getDayOfMonth()).getDayOfWeek();
                 if(d == DayOfWeek.SUNDAY){ /////somente o ultimo dia util(no maximo sabado)
-                    //f.get(i).setPaymentDay(f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth()).minusDays(1));
                     f.get(i).setPaymentDay(l2.minusDays(1));
                 }else{
-                    //f.get(i).setPaymentDay(f.get(i).getPaymentDay().with(TemporalAdjusters.lastDayOfMonth()));
                     f.get(i).setPaymentDay(l2.with(TemporalAdjusters.lastDayOfMonth()));
                 } 
             }else { // timeMethod sera o dia do pagamento
