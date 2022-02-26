@@ -155,6 +155,8 @@ public class EditEmployee extends javax.swing.JFrame {
 
         jLabel6.setText("Comissão(%):");
 
+        txtCommission.setText("0.0");
+
         lblDia_semana.setText("Dia/nSamanas");
 
         txtDiaNSemanas.addActionListener(new java.awt.event.ActionListener() {
